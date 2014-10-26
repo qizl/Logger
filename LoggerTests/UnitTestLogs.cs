@@ -4,7 +4,7 @@ using Logger;
 using System.IO;
 using System.Collections.Generic;
 
-namespace LoggerTest
+namespace LoggerTests
 {
     [TestClass]
     public class UnitTestLogs
