@@ -1,0 +1,10 @@
+﻿<Complex name="Root" type="LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+  <Properties>
+    <Simple name="BeginTime" value="10/26/2014 14:49:57" />
+    <Simple name="EndTime" value="10/26/2014 14:49:57" />
+    <Simple name="Keywords" value="" />
+    <Simple name="Type" value="Normal" />
+    <Simple name="CreateTime" value="10/26/2014 14:49:57" />
+    <Simple name="UpdateTime" value="10/26/2014 22:45:40" />
+  </Properties>
+</Complex>
