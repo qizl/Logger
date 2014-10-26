@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerTest", "LoggerTest\Lo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogAnalyzer", "LogAnalyzer\LogAnalyzer.csproj", "{549EBB6D-7257-462B-A9B3-F3C038CA62A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpSerializerLibrary", "..\..\..\..\XmlSerializer\trunk\src\SharpSerializerLibrary\SharpSerializerLibrary.csproj", "{88AB738F-7A36-4C93-B808-B6CE2D3444B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpSerializerLibrary", "SharpSerializerLibrary\SharpSerializerLibrary.csproj", "{88AB738F-7A36-4C93-B808-B6CE2D3444B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
