@@ -50,14 +50,14 @@
             this.tabResultAnaylze = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgvResult = new System.Windows.Forms.DataGridView();
-            this.dgvResultclmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvResultclmType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvResultclmDescribe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plFoot = new System.Windows.Forms.Panel();
             this.lblFindDescribe = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.dgvResultclmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvResultclmType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvResultclmDescribe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plHead.SuspendLayout();
             this.plBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -313,32 +313,11 @@
             this.dgvResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvResult.Location = new System.Drawing.Point(3, 3);
             this.dgvResult.Name = "dgvResult";
-            this.dgvResult.ReadOnly = true;
             this.dgvResult.RowHeadersWidth = 50;
             this.dgvResult.RowTemplate.Height = 23;
             this.dgvResult.Size = new System.Drawing.Size(1032, 144);
             this.dgvResult.TabIndex = 7;
             this.dgvResult.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvResult_RowPostPaint);
-            // 
-            // dgvResultclmTime
-            // 
-            this.dgvResultclmTime.HeaderText = "时间";
-            this.dgvResultclmTime.Name = "dgvResultclmTime";
-            this.dgvResultclmTime.ReadOnly = true;
-            this.dgvResultclmTime.Width = 200;
-            // 
-            // dgvResultclmType
-            // 
-            this.dgvResultclmType.HeaderText = "类型";
-            this.dgvResultclmType.Name = "dgvResultclmType";
-            this.dgvResultclmType.ReadOnly = true;
-            // 
-            // dgvResultclmDescribe
-            // 
-            this.dgvResultclmDescribe.HeaderText = "描述";
-            this.dgvResultclmDescribe.Name = "dgvResultclmDescribe";
-            this.dgvResultclmDescribe.ReadOnly = true;
-            this.dgvResultclmDescribe.Width = 800;
             // 
             // plFoot
             // 
@@ -389,6 +368,23 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "数据分析";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // dgvResultclmTime
+            // 
+            this.dgvResultclmTime.HeaderText = "时间";
+            this.dgvResultclmTime.Name = "dgvResultclmTime";
+            this.dgvResultclmTime.Width = 200;
+            // 
+            // dgvResultclmType
+            // 
+            this.dgvResultclmType.HeaderText = "类型";
+            this.dgvResultclmType.Name = "dgvResultclmType";
+            // 
+            // dgvResultclmDescribe
+            // 
+            this.dgvResultclmDescribe.HeaderText = "描述";
+            this.dgvResultclmDescribe.Name = "dgvResultclmDescribe";
+            this.dgvResultclmDescribe.Width = 800;
             // 
             // FormMain
             // 
@@ -452,10 +448,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbxTypes;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblFindDescribe;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvResultclmTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvResultclmType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvResultclmDescribe;
-        private System.Windows.Forms.Label lblFindDescribe;
     }
 }
 

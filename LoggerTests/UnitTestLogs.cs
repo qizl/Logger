@@ -64,5 +64,31 @@ namespace LoggerTests
 
             List<Log> logs = log.Read(path);
         }
+
+        [TestMethod]
+        public void TestWriteLineRemoveLineBreak()
+        {
+            Logs log = new Logs(Path.Combine(Environment.CurrentDirectory, "Logs"));
+            log.IsRemoveLineBreak = true;
+            string str = "123" + Environment.NewLine + "newline";
+            string strResult = log.WriteLine(str);
+
+            Assert.IsFalse(strResult.Contains(Environment.NewLine));
+        }
+
+        [TestMethod]
+        public void TestWriterLineException()
+        {
+            Logs log = new Logs();
+            try
+            {
+                int i = 0;
+                int j = 1 / i;
+            }
+            catch (Exception ex)
+            {
+                log.WriteLine(ex, "Test");
+            }
+        }
     }
 }

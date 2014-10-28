@@ -1,0 +1,1 @@
+2014-10-27 14:43:28 323 Error:Test,尝试除以零。,StackTrace:   在 LoggerTests.UnitTestLogs.TestWriterLineException() 位置 e:\PL\MyProjects\SVN\Logger\trunk\src\Logger\LoggerTests\UnitTestLogs.cs:行号 86

@@ -44,13 +44,8 @@ namespace LogAnalyzer
 
         private void btnOpenFiles_Click(object sender, EventArgs e)
         {
-            string defaultFolder = Path.Combine(Environment.CurrentDirectory, "Logs");
-            if (!Directory.Exists(defaultFolder))
-                Directory.CreateDirectory(defaultFolder);
-
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
-                dialog.InitialDirectory = defaultFolder;
                 dialog.Multiselect = true;
                 dialog.Title = "请选择日志文件：";
                 dialog.Filter = "日志文件(*.log)|*.log|文本文件(*.txt)|*.txt";
@@ -138,7 +133,7 @@ namespace LogAnalyzer
                 foreach (var item in keywords)
                 {
                     if (!string.IsNullOrEmpty(item))
-                        this._logsResult = this._logsResult.Where(l => l.Describe.Contains(item)).ToList();
+                        this._logsResult = this._logsResult.Where(l => l.Describe.Contains(item)).ToList(); // 查询改为条件或
                 }
             }
             if (this.cbxTypes.Text != LogTypes.All.ToString())
@@ -150,6 +145,7 @@ namespace LogAnalyzer
             /*
              * 高级检索
              */
+            // TODO:
         }
         void bindlingResult()
         {
@@ -182,7 +178,7 @@ namespace LogAnalyzer
                         dialog.Title = "请选择保存路径:";
                         dialog.Filter = "日志文件(*.log)|*.log|文本文件(*.txt)|*.txt";
                         dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                        dialog.FileName = new FileInfo(this._logdFilesPath[0]).Name;
+                        dialog.FileName = "检索数据";
                         if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
                             Logs log = new Logs(dialog.FileName, 0);

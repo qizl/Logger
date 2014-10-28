@@ -36,6 +36,11 @@ namespace Logger
         /// 缓存路径
         /// </summary>
         public string TempFolder { get; private set; }
+
+        /// <summary>
+        /// 是否替移除换行符
+        /// </summary>
+        public bool IsRemoveLineBreak { get; set; }
         #endregion
 
         #region Members
@@ -46,6 +51,8 @@ namespace Logger
         {
             public static string LogsFolder = Path.Combine(Environment.CurrentDirectory, "Logs");
             public static int Size = 1024 * 1024;
+            public static bool IsEncrypt = false;
+            public static bool IsRemoveLineBreak = true;
         }
         #endregion
 
@@ -56,6 +63,8 @@ namespace Logger
             this.TempFolder = Path.Combine(this.LogsFolder, "Temp");
 
             this.Size = Default.Size;
+            this.IsEncrypt = Default.IsEncrypt;
+            this.IsRemoveLineBreak = Default.IsRemoveLineBreak;
         }
 
         /// <summary>
@@ -136,6 +145,12 @@ namespace Logger
                 str = Convert.ToBase64String(output);
             }
 
+            // 判断是否需要移除换行符
+            if (this.IsRemoveLineBreak)
+            {
+                str = str.Replace(Environment.NewLine, "");
+            }
+
             try
             {
                 using (StreamWriter stream = new StreamWriter(this.LogFilePath, true))
@@ -170,7 +185,7 @@ namespace Logger
         public string WriteLine(Exception e, string remark)
         {
             string status = e.InnerException == null ? e.Message : e.Message + ",InnerException:" + e.InnerException.Message;
-            status = LogTypes.Error.ToString() + ":" + remark + "," + status;
+            status = LogTypes.Error.ToString() + ":" + remark + "," + status + (!string.IsNullOrEmpty(e.StackTrace) ? ",StackTrace:" + e.StackTrace : "");
             return this.WriteLine(status);
         }
 
@@ -186,9 +201,9 @@ namespace Logger
             StringBuilder s = new StringBuilder();
             foreach (var b in bs)
                 s.Append("0x" + b.ToString("x2") + ",");
-            string ascii = ASCIIEncoding.ASCII.GetString(bs);
+            string str = ASCIIEncoding.Default.GetString(bs);
 
-            return this.WriteLine(remark + ",Bytes (" + bs.Length + "): " + s.ToString() + ",ASCII (" + ascii.Length + "): " + ascii);
+            return this.WriteLine(remark + ",Bytes (" + bs.Length + "): " + s.ToString() + ",字符 (" + str.Length + "): " + str);
         }
 
         /// <summary>
@@ -252,7 +267,8 @@ namespace Logger
                 while (str != null)
                 {
                     Log log = this.ReadLine(str);
-                    logs.Add(log);
+                    if (log != null)
+                        logs.Add(log);
 
                     str = stream.ReadLine();
                 }
@@ -285,7 +301,7 @@ namespace Logger
 
                 log.Describe = typeDescribeString;
             }
-            catch { }
+            catch { log = null; }
 
             return log;
         }
