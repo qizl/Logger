@@ -132,7 +132,7 @@ namespace LogAnalyzer
             {
                 foreach (var item in keywords)
                 {
-                    if (!string.IsNullOrEmpty(item))
+                    if (!string.IsNullOrWhiteSpace(item))
                         this._logsResult = this._logsResult.Where(l => l.Describe.Contains(item)).ToList(); // 查询改为条件或
                 }
             }

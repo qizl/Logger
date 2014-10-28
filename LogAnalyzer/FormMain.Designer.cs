@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.plHead = new System.Windows.Forms.Panel();
             this.lblOpenFileDescribe = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -50,14 +51,14 @@
             this.tabResultAnaylze = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgvResult = new System.Windows.Forms.DataGridView();
+            this.dgvResultclmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvResultclmType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvResultclmDescribe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plFoot = new System.Windows.Forms.Panel();
             this.lblFindDescribe = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.dgvResultclmTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvResultclmType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvResultclmDescribe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plHead.SuspendLayout();
             this.plBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -319,6 +320,23 @@
             this.dgvResult.TabIndex = 7;
             this.dgvResult.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvResult_RowPostPaint);
             // 
+            // dgvResultclmTime
+            // 
+            this.dgvResultclmTime.HeaderText = "时间";
+            this.dgvResultclmTime.Name = "dgvResultclmTime";
+            this.dgvResultclmTime.Width = 200;
+            // 
+            // dgvResultclmType
+            // 
+            this.dgvResultclmType.HeaderText = "类型";
+            this.dgvResultclmType.Name = "dgvResultclmType";
+            // 
+            // dgvResultclmDescribe
+            // 
+            this.dgvResultclmDescribe.HeaderText = "描述";
+            this.dgvResultclmDescribe.Name = "dgvResultclmDescribe";
+            this.dgvResultclmDescribe.Width = 800;
+            // 
             // plFoot
             // 
             this.plFoot.Controls.Add(this.lblFindDescribe);
@@ -369,23 +387,6 @@
             this.tabPage5.Text = "数据分析";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // dgvResultclmTime
-            // 
-            this.dgvResultclmTime.HeaderText = "时间";
-            this.dgvResultclmTime.Name = "dgvResultclmTime";
-            this.dgvResultclmTime.Width = 200;
-            // 
-            // dgvResultclmType
-            // 
-            this.dgvResultclmType.HeaderText = "类型";
-            this.dgvResultclmType.Name = "dgvResultclmType";
-            // 
-            // dgvResultclmDescribe
-            // 
-            this.dgvResultclmDescribe.HeaderText = "描述";
-            this.dgvResultclmDescribe.Name = "dgvResultclmDescribe";
-            this.dgvResultclmDescribe.Width = 800;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -394,6 +395,7 @@
             this.Controls.Add(this.plBody);
             this.Controls.Add(this.plHead);
             this.Font = new System.Drawing.Font("Arial", 12F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

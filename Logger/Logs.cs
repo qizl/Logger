@@ -291,19 +291,56 @@ namespace Logger
             str = this.IsLogStringEncrypt(str) ? this.EncryptLine(str) : str; // 判断是否需要解密，并解密
             try
             {
+                /*
+                 * 1.截取日志时间
+                 */
                 int timeStringLength = this.GetTimeString(DateTime.Now).Length;
                 string timeStr0 = str.Substring(0, timeStringLength - 4);
                 int timeStrMs = Convert.ToInt32(str.Substring(timeStringLength - 3, 3));
                 log.Time = Convert.ToDateTime(timeStr0).AddMilliseconds(timeStrMs);
 
-                string typeDescribeString = str.Substring(timeStringLength + 1, str.Length - timeStringLength - 1);
-                log.Type = LogTypes.Normal; // TODO: 截取日志类型
+                string typeDescribeString = str.Substring(timeStringLength + 1, str.Length - timeStringLength - 1); // 日志类型与描述字符串
+                string describeString = typeDescribeString; // 日志描述字符串
 
-                log.Describe = typeDescribeString;
+                /*
+                 * 2.截取日志类型
+                 */
+                log.Type = LogTypes.Normal;
+                string[] strs = typeDescribeString.Split(':');
+                if (strs.Length > 1)
+                {
+                    // 获取日志类型
+                    log.Type = this.getLogType(strs[0]);
+
+                    // 非类型字符串拼接为日志描述
+                    if (log.Type != LogTypes.Normal)
+                    {
+                        StringBuilder d = new StringBuilder();
+                        for (int i = 1; i < strs.Length; i++)
+                            d.Append(strs[i]);
+                        describeString = d.ToString();
+                    }
+                }
+
+                /*
+                 * 3.截取日志描述
+                 */
+                log.Describe = describeString;
             }
             catch { log = null; }
 
             return log;
+        }
+
+        private LogTypes getLogType(string typeStr)
+        {
+            LogTypes type;
+
+            bool b = Enum.TryParse<LogTypes>(typeStr, out type);
+            if (!b)
+                type = LogTypes.Normal;
+
+            return type;
         }
 
         /// <summary>
