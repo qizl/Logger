@@ -1,14 +1,16 @@
 ﻿<Complex name="Root" type="LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
   <Properties>
-    <Simple name="BeginTime" value="11/06/2014 17:03:59" />
-    <Simple name="EndTime" value="11/06/2014 19:43:02" />
+    <Simple name="BeginTime" value="11/06/2014 16:12:03" />
+    <Simple name="EndTime" value="11/07/2014 07:45:05" />
     <Simple name="Keywords" value="error" />
     <Simple name="Type" value="All" />
     <Simple name="IgnoreCase" value="True" />
-    <Simple name="EnabledNearFind" value="True" />
-    <Simple name="NearFindKeywords" value="入柜,取件,cmdtype&gt;02&lt;/cmdtype" />
-    <Simple name="NearFindRegion" value="2" />
-    <Simple name="CreateTime" value="10/28/2014 09:23:17" />
-    <Simple name="UpdateTime" value="11/07/2014 11:11:40" />
+    <Simple name="EnabledNearFind" value="False" />
+    <Simple name="NearFindKeywords" value="入柜,cmdtype&gt;02&lt;/cmdtype" />
+    <Simple name="NearFindRegion" value="5" />
+    <Simple name="IncludeKeywords" value="False" />
+    <Simple name="IncludeNearKeywords" value="True" />
+    <Simple name="CreateTime" value="11/07/2014 11:56:37" />
+    <Simple name="UpdateTime" value="11/07/2014 13:25:34" />
   </Properties>
 </Complex>

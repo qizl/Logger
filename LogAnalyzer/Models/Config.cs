@@ -25,6 +25,14 @@ namespace LogAnalyzer.Models
         public bool EnabledNearFind { get; set; }
         public string NearFindKeywords { get; set; }
         public int NearFindRegion { get; set; }
+        /// <summary>
+        /// 临近检索结果是否包含使用关键字检索到的行
+        /// </summary>
+        public bool IncludeKeywords { get; set; }
+        /// <summary>
+        /// 临近检索结果是否包含使用临近关键字检索到的行
+        /// </summary>
+        public bool IncludeNearKeywords { get; set; }
 
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }

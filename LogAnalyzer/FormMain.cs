@@ -44,6 +44,8 @@ namespace LogAnalyzer
             this.ckxEnabledNearFind.Checked = false;
             this.txtNearFindKeywords.Text = Common.Config.NearFindKeywords;
             this.nudNearFindRegion.Value = Common.Config.NearFindRegion;
+            this.ckxIncludeKeywords.Checked = Common.Config.IncludeKeywords;
+            this.ckxIncludeNearKeywords.Checked = Common.Config.IncludeNearKeywords;
         }
 
         private void btnOpenFiles_Click(object sender, EventArgs e)
@@ -101,6 +103,8 @@ namespace LogAnalyzer
                 this.dtpEndTime.Value = this._logs.Last().Time;
             }
 
+            this.ckxEnabledNearFind.Checked = false;
+
             this.bindingResult();
         }
 
@@ -110,6 +114,21 @@ namespace LogAnalyzer
             this._logs.Clear();
             this._logsResult.Clear();
             this.bindingDatas();
+        }
+
+        /// <summary>
+        /// 重置查询时间段
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnResetFindTime_Click(object sender, EventArgs e)
+        {
+            if (this._logs.Count != 0)
+            {
+                this._logs = this._logs.OrderBy(l => l.Time).ToList();
+                this.dtpBeginTime.Value = this._logs.First().Time;
+                this.dtpEndTime.Value = this._logs.Last().Time;
+            }
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -134,14 +153,15 @@ namespace LogAnalyzer
             string[] keywords = this.txtKeywords.Text.Split(',');
             if (keywords.Length > 0)
             {
+                // 查询改为条件或
                 foreach (var item in keywords)
                 {
                     if (!string.IsNullOrWhiteSpace(item))
                     {
                         if (this.ckxIgnoreCase.Checked)
-                            this._logsResult = this._logsResult.Where(l => l.Describe.ToLower().Contains(item.ToLower())).ToList(); // 查询改为条件或
+                            this._logsResult = this._logsResult.Where(l => l.Describe.ToLower().Contains(item.ToLower())).ToList();
                         else
-                            this._logsResult = this._logsResult.Where(l => l.Describe.Contains(item)).ToList(); // 查询改为条件或
+                            this._logsResult = this._logsResult.Where(l => l.Describe.Contains(item)).ToList();
                     }
                 }
             }
@@ -167,13 +187,14 @@ namespace LogAnalyzer
                     int startIndex = index - nearfindRegion < 0 ? 0 : index - nearfindRegion;
                     int count = startIndex + nearfindRegion * 2 > this._logs.Count - 1 ? this._logs.Count - 1 - (startIndex + nearfindRegion * 2) : nearfindRegion * 2;
 
-                    result.Add(this._logs[index]);
+                    if (this.ckxIncludeKeywords.Checked)
+                        result.Add(this._logs[index]);
 
                     foreach (var nearfindKeyword in nearfindKeywords)
-                        if (!string.IsNullOrEmpty(nearfindKeyword))
+                        for (int i = startIndex; i < startIndex + count; i++)
                         {
-                            int nIndex = this._logs.FindIndex(startIndex, count, l => l.Describe.ToLower().Contains(nearfindKeyword.ToLower()));
-                            if (nIndex != -1)
+                            int nIndex = this._logs.FindIndex(i, 1, l => l.Describe.ToLower().Contains(nearfindKeyword.ToLower()));
+                            if (nIndex != index && nIndex != -1 && this.ckxIncludeNearKeywords.Checked)
                                 result.Add(this._logs[nIndex]);
                         }
                 }
@@ -208,6 +229,8 @@ namespace LogAnalyzer
             Common.Config.EnabledNearFind = this.ckxEnabledNearFind.Checked;
             Common.Config.NearFindKeywords = this.txtNearFindKeywords.Text;
             Common.Config.NearFindRegion = (int)this.nudNearFindRegion.Value;
+            Common.Config.IncludeKeywords = this.ckxIncludeKeywords.Checked;
+            Common.Config.IncludeNearKeywords = this.ckxIncludeNearKeywords.Checked;
             Common.Config.Save(Common.ConfigPath);
         }
 
@@ -232,6 +255,14 @@ namespace LogAnalyzer
 
                         this.btnExport.Text = "完成";
                     }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            this._logsResult.Clear();
+            this._logsResult.AddRange(this._logs);
+
+            this.bindingDatas();
         }
 
         private void dgvResult_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)

@@ -17,6 +17,9 @@ namespace LogAnalyzer.Models
             EndTime = DateTime.Now,
             Keywords = string.Empty,
             IgnoreCase = true,
+            NearFindRegion = 5,
+            IncludeKeywords = true,
+            IncludeNearKeywords = true,
             Type = Logger.LogTypes.Normal,
             CreateTime = DateTime.Now,
             UpdateTime = DateTime.Now

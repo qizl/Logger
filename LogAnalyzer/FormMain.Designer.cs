@@ -48,6 +48,17 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabFindsAdvanced = new System.Windows.Forms.TabControl();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.nudNearFindRegion = new System.Windows.Forms.NumericUpDown();
+            this.txtNearFindKeywords = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ckxEnabledNearFind = new System.Windows.Forms.CheckBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabResultAnaylze = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgvResult = new System.Windows.Forms.DataGridView();
@@ -59,17 +70,11 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabFindsAdvanced = new System.Windows.Forms.TabControl();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.ckxEnabledNearFind = new System.Windows.Forms.CheckBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtNearFindKeywords = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.nudNearFindRegion = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
+            this.btnResetFindTime = new System.Windows.Forms.Button();
+            this.ckxIncludeKeywords = new System.Windows.Forms.CheckBox();
+            this.ckxIncludeNearKeywords = new System.Windows.Forms.CheckBox();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.btnReset = new System.Windows.Forms.Button();
             this.plHead.SuspendLayout();
             this.plBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -79,14 +84,14 @@
             this.tabFinds.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabResultAnaylze.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
-            this.plFoot.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabFindsAdvanced.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNearFindRegion)).BeginInit();
+            this.tabResultAnaylze.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
+            this.plFoot.SuspendLayout();
             this.SuspendLayout();
             // 
             // plHead
@@ -172,6 +177,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnResetFindTime);
             this.tabPage1.Controls.Add(this.dtpEndTime);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.dtpBeginTime);
@@ -179,7 +185,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1076, 166);
+            this.tabPage1.Size = new System.Drawing.Size(1076, 216);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "时间段检索";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -231,7 +237,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1076, 166);
+            this.tabPage2.Size = new System.Drawing.Size(1076, 216);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "关键字检索";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -297,6 +303,125 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "关键字：";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tabFindsAdvanced);
+            this.tabPage3.Location = new System.Drawing.Point(4, 30);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1076, 216);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "高级检索";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabFindsAdvanced
+            // 
+            this.tabFindsAdvanced.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabFindsAdvanced.Controls.Add(this.tabPage6);
+            this.tabFindsAdvanced.Controls.Add(this.tabPage8);
+            this.tabFindsAdvanced.Controls.Add(this.tabPage7);
+            this.tabFindsAdvanced.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabFindsAdvanced.Location = new System.Drawing.Point(0, 0);
+            this.tabFindsAdvanced.Name = "tabFindsAdvanced";
+            this.tabFindsAdvanced.SelectedIndex = 0;
+            this.tabFindsAdvanced.Size = new System.Drawing.Size(1076, 216);
+            this.tabFindsAdvanced.TabIndex = 0;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.ckxIncludeNearKeywords);
+            this.tabPage6.Controls.Add(this.ckxIncludeKeywords);
+            this.tabPage6.Controls.Add(this.nudNearFindRegion);
+            this.tabPage6.Controls.Add(this.txtNearFindKeywords);
+            this.tabPage6.Controls.Add(this.label7);
+            this.tabPage6.Controls.Add(this.label8);
+            this.tabPage6.Controls.Add(this.label9);
+            this.tabPage6.Controls.Add(this.label6);
+            this.tabPage6.Controls.Add(this.ckxEnabledNearFind);
+            this.tabPage6.Location = new System.Drawing.Point(4, 30);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1068, 182);
+            this.tabPage6.TabIndex = 0;
+            this.tabPage6.Text = "临近检索";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // nudNearFindRegion
+            // 
+            this.nudNearFindRegion.Location = new System.Drawing.Point(139, 142);
+            this.nudNearFindRegion.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudNearFindRegion.Name = "nudNearFindRegion";
+            this.nudNearFindRegion.Size = new System.Drawing.Size(120, 26);
+            this.nudNearFindRegion.TabIndex = 13;
+            // 
+            // txtNearFindKeywords
+            // 
+            this.txtNearFindKeywords.Location = new System.Drawing.Point(139, 52);
+            this.txtNearFindKeywords.Multiline = true;
+            this.txtNearFindKeywords.Name = "txtNearFindKeywords";
+            this.txtNearFindKeywords.Size = new System.Drawing.Size(640, 76);
+            this.txtNearFindKeywords.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(785, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(162, 18);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "* 使用逗号分隔关键字";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(45, 56);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(104, 18);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "临近关键字：";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(259, 146);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(24, 18);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "行";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(45, 146);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 18);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "范围：";
+            // 
+            // ckxEnabledNearFind
+            // 
+            this.ckxEnabledNearFind.AutoSize = true;
+            this.ckxEnabledNearFind.Location = new System.Drawing.Point(45, 22);
+            this.ckxEnabledNearFind.Name = "ckxEnabledNearFind";
+            this.ckxEnabledNearFind.Size = new System.Drawing.Size(459, 22);
+            this.ckxEnabledNearFind.TabIndex = 8;
+            this.ckxEnabledNearFind.Text = "启用（在关键字检索所设定的关键字查询结果附近进行检索）";
+            this.ckxEnabledNearFind.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 30);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(1068, 182);
+            this.tabPage7.TabIndex = 1;
+            this.tabPage7.Text = "插件处理";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
             // tabResultAnaylze
             // 
             this.tabResultAnaylze.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
@@ -359,6 +484,7 @@
             // plFoot
             // 
             this.plFoot.Controls.Add(this.lblFindDescribe);
+            this.plFoot.Controls.Add(this.btnReset);
             this.plFoot.Controls.Add(this.btnExport);
             this.plFoot.Controls.Add(this.btnFind);
             this.plFoot.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -401,121 +527,65 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 25);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1038, 276);
+            this.tabPage5.Size = new System.Drawing.Size(1076, 346);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "数据分析";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // btnResetFindTime
             // 
-            this.tabPage3.Controls.Add(this.tabFindsAdvanced);
-            this.tabPage3.Location = new System.Drawing.Point(4, 30);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1076, 216);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "高级检索";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.btnResetFindTime.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnResetFindTime.Location = new System.Drawing.Point(139, 101);
+            this.btnResetFindTime.Name = "btnResetFindTime";
+            this.btnResetFindTime.Size = new System.Drawing.Size(75, 26);
+            this.btnResetFindTime.TabIndex = 5;
+            this.btnResetFindTime.Text = "重置";
+            this.btnResetFindTime.UseVisualStyleBackColor = true;
+            this.btnResetFindTime.Click += new System.EventHandler(this.btnResetFindTime_Click);
             // 
-            // tabFindsAdvanced
+            // ckxIncludeKeywords
             // 
-            this.tabFindsAdvanced.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.tabFindsAdvanced.Controls.Add(this.tabPage6);
-            this.tabFindsAdvanced.Controls.Add(this.tabPage7);
-            this.tabFindsAdvanced.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabFindsAdvanced.Location = new System.Drawing.Point(0, 0);
-            this.tabFindsAdvanced.Name = "tabFindsAdvanced";
-            this.tabFindsAdvanced.SelectedIndex = 0;
-            this.tabFindsAdvanced.Size = new System.Drawing.Size(1076, 216);
-            this.tabFindsAdvanced.TabIndex = 0;
+            this.ckxIncludeKeywords.AutoSize = true;
+            this.ckxIncludeKeywords.Checked = true;
+            this.ckxIncludeKeywords.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckxIncludeKeywords.Location = new System.Drawing.Point(317, 144);
+            this.ckxIncludeKeywords.Name = "ckxIncludeKeywords";
+            this.ckxIncludeKeywords.Size = new System.Drawing.Size(107, 22);
+            this.ckxIncludeKeywords.TabIndex = 14;
+            this.ckxIncludeKeywords.Text = "包含关键字";
+            this.ckxIncludeKeywords.UseVisualStyleBackColor = true;
             // 
-            // tabPage6
+            // ckxIncludeNearKeywords
             // 
-            this.tabPage6.Controls.Add(this.nudNearFindRegion);
-            this.tabPage6.Controls.Add(this.txtNearFindKeywords);
-            this.tabPage6.Controls.Add(this.label7);
-            this.tabPage6.Controls.Add(this.label8);
-            this.tabPage6.Controls.Add(this.label9);
-            this.tabPage6.Controls.Add(this.label6);
-            this.tabPage6.Controls.Add(this.ckxEnabledNearFind);
-            this.tabPage6.Location = new System.Drawing.Point(4, 30);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1068, 182);
-            this.tabPage6.TabIndex = 0;
-            this.tabPage6.Text = "关键字临近检索";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.ckxIncludeNearKeywords.AutoSize = true;
+            this.ckxIncludeNearKeywords.Checked = true;
+            this.ckxIncludeNearKeywords.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckxIncludeNearKeywords.Location = new System.Drawing.Point(427, 144);
+            this.ckxIncludeNearKeywords.Name = "ckxIncludeNearKeywords";
+            this.ckxIncludeNearKeywords.Size = new System.Drawing.Size(139, 22);
+            this.ckxIncludeNearKeywords.TabIndex = 14;
+            this.ckxIncludeNearKeywords.Text = "包含临近关键字";
+            this.ckxIncludeNearKeywords.UseVisualStyleBackColor = true;
             // 
-            // tabPage7
+            // tabPage8
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 30);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1068, 182);
-            this.tabPage7.TabIndex = 1;
-            this.tabPage7.Text = "插件处理";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            this.tabPage8.Location = new System.Drawing.Point(4, 30);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(1068, 182);
+            this.tabPage8.TabIndex = 2;
+            this.tabPage8.Text = "正则匹配";
+            this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // ckxEnabledNearFind
+            // btnReset
             // 
-            this.ckxEnabledNearFind.AutoSize = true;
-            this.ckxEnabledNearFind.Location = new System.Drawing.Point(45, 22);
-            this.ckxEnabledNearFind.Name = "ckxEnabledNearFind";
-            this.ckxEnabledNearFind.Size = new System.Drawing.Size(59, 22);
-            this.ckxEnabledNearFind.TabIndex = 8;
-            this.ckxEnabledNearFind.Text = "启用";
-            this.ckxEnabledNearFind.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(45, 146);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 18);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "范围：";
-            // 
-            // txtNearFindKeywords
-            // 
-            this.txtNearFindKeywords.Location = new System.Drawing.Point(138, 52);
-            this.txtNearFindKeywords.Multiline = true;
-            this.txtNearFindKeywords.Name = "txtNearFindKeywords";
-            this.txtNearFindKeywords.Size = new System.Drawing.Size(640, 76);
-            this.txtNearFindKeywords.TabIndex = 12;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(784, 110);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 18);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "* 使用逗号分隔关键字";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(45, 56);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(72, 18);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "关键字：";
-            // 
-            // nudNearFindRegion
-            // 
-            this.nudNearFindRegion.Location = new System.Drawing.Point(138, 142);
-            this.nudNearFindRegion.Name = "nudNearFindRegion";
-            this.nudNearFindRegion.Size = new System.Drawing.Size(120, 26);
-            this.nudNearFindRegion.TabIndex = 13;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(258, 146);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(24, 18);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "行";
+            this.btnReset.Location = new System.Drawing.Point(403, 22);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(119, 43);
+            this.btnReset.TabIndex = 9;
+            this.btnReset.Text = "重置";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // FormMain
             // 
@@ -543,16 +613,16 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabResultAnaylze.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).EndInit();
-            this.plFoot.ResumeLayout(false);
-            this.plFoot.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabFindsAdvanced.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNearFindRegion)).EndInit();
+            this.tabResultAnaylze.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).EndInit();
+            this.plFoot.ResumeLayout(false);
+            this.plFoot.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -600,6 +670,11 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnResetFindTime;
+        private System.Windows.Forms.CheckBox ckxIncludeNearKeywords;
+        private System.Windows.Forms.CheckBox ckxIncludeKeywords;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 
