@@ -14,11 +14,22 @@ namespace LogAnalyzer.Models
 
         public string Keywords { get; set; }
         public LogTypes Type { get; set; }
+        /// <summary>
+        /// 是否忽略大小写
+        /// </summary>
+        public bool IgnoreCase { get; set; }
+
+        /// <summary>
+        /// 启用临近检索  
+        /// </summary>
+        public bool EnabledNearFind { get; set; }
+        public string NearFindKeywords { get; set; }
+        public int NearFindRegion { get; set; }
 
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }
 
-        public static Config Read(string path)
+        public static Config Load(string path)
         {
             Config config = null;
             try
@@ -30,12 +41,12 @@ namespace LogAnalyzer.Models
             return config;
         }
 
-        public static bool Save(Config config, string path)
+        public bool Save(string path)
         {
             try
             {
                 SharpSerializer serializer = new SharpSerializer();
-                serializer.Serialize(config, path);
+                serializer.Serialize(this, path);
             }
             catch { return false; }
             return true;

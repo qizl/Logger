@@ -16,6 +16,7 @@ namespace LogAnalyzer.Models
             BeginTime = DateTime.Now,
             EndTime = DateTime.Now,
             Keywords = string.Empty,
+            IgnoreCase = true,
             Type = Logger.LogTypes.Normal,
             CreateTime = DateTime.Now,
             UpdateTime = DateTime.Now

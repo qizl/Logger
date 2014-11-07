@@ -30,16 +30,20 @@ namespace LogAnalyzer
         }
         void initialize()
         {
-            Common.Config = Config.Read(Common.ConfigPath);
+            Common.Config = Config.Load(Common.ConfigPath);
             if (Common.Config == null)
                 Common.Config = Common.DefaultConfig;
             Common.Config.UpdateTime = DateTime.Now;
-            Config.Save(Common.Config, Common.ConfigPath);
+            Common.Config.Save(Common.ConfigPath);
 
             //this.dtpBeginTime.Value = Common.Config.BeginTime;
             //this.dtpEndTime.Value = Common.Config.EndTime;
             //this.txtKeywords.Text = Common.Config.Keywords;
-            //this.cbxTypes.Text = Common.Config.Type.ToString();
+            this.cbxTypes.Text = LogTypes.All.ToString();
+            this.ckxIgnoreCase.Checked = Common.Config.IgnoreCase;
+            this.ckxEnabledNearFind.Checked = false;
+            this.txtNearFindKeywords.Text = Common.Config.NearFindKeywords;
+            this.nudNearFindRegion.Value = Common.Config.NearFindRegion;
         }
 
         private void btnOpenFiles_Click(object sender, EventArgs e)
@@ -54,7 +58,7 @@ namespace LogAnalyzer
                     this._logdFilesPath = dialog.FileNames;
 
                     this.readLogs();
-                    this.bindlingDatas();
+                    this.bindingDatas();
                 }
             }
         }
@@ -74,7 +78,7 @@ namespace LogAnalyzer
             this._logsResult.Clear();
             this._logsResult.AddRange(this._logs);
         }
-        void bindlingDatas()
+        void bindingDatas()
         {
             int amounts = this._logdFilesPath == null ? 0 : this._logdFilesPath.Length;
             float size = 0;
@@ -97,7 +101,7 @@ namespace LogAnalyzer
                 this.dtpEndTime.Value = this._logs.Last().Time;
             }
 
-            this.bindlingResult();
+            this.bindingResult();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -105,14 +109,14 @@ namespace LogAnalyzer
             this._logdFilesPath = null;
             this._logs.Clear();
             this._logsResult.Clear();
-            this.bindlingDatas();
+            this.bindingDatas();
         }
 
         private void btnFind_Click(object sender, EventArgs e)
         {
             this.find();
 
-            this.bindlingResult();
+            this.bindingResult();
         }
         void find()
         {
@@ -133,7 +137,12 @@ namespace LogAnalyzer
                 foreach (var item in keywords)
                 {
                     if (!string.IsNullOrWhiteSpace(item))
-                        this._logsResult = this._logsResult.Where(l => l.Describe.Contains(item)).ToList(); // 查询改为条件或
+                    {
+                        if (this.ckxIgnoreCase.Checked)
+                            this._logsResult = this._logsResult.Where(l => l.Describe.ToLower().Contains(item.ToLower())).ToList(); // 查询改为条件或
+                        else
+                            this._logsResult = this._logsResult.Where(l => l.Describe.Contains(item)).ToList(); // 查询改为条件或
+                    }
                 }
             }
             if (this.cbxTypes.Text != LogTypes.All.ToString())
@@ -145,9 +154,37 @@ namespace LogAnalyzer
             /*
              * 高级检索
              */
-            // TODO:
+            // 临近检索
+            if (this.ckxEnabledNearFind.Checked)
+            {
+                string[] nearfindKeywords = this.txtNearFindKeywords.Text.Split(',');
+                int nearfindRegion = (int)this.nudNearFindRegion.Value;
+
+                List<Log> result = new List<Log>();
+                foreach (var item in this._logsResult)
+                {
+                    int index = this._logs.IndexOf(item);
+                    int startIndex = index - nearfindRegion < 0 ? 0 : index - nearfindRegion;
+                    int count = startIndex + nearfindRegion * 2 > this._logs.Count - 1 ? this._logs.Count - 1 - (startIndex + nearfindRegion * 2) : nearfindRegion * 2;
+
+                    result.Add(this._logs[index]);
+
+                    foreach (var nearfindKeyword in nearfindKeywords)
+                        if (!string.IsNullOrEmpty(nearfindKeyword))
+                        {
+                            int nIndex = this._logs.FindIndex(startIndex, count, l => l.Describe.ToLower().Contains(nearfindKeyword.ToLower()));
+                            if (nIndex != -1)
+                                result.Add(this._logs[nIndex]);
+                        }
+                }
+
+                result = result.Distinct().ToList();
+
+                this._logsResult.Clear();
+                this._logsResult.AddRange(result);
+            }
         }
-        void bindlingResult()
+        void bindingResult()
         {
             this.dgvResult.Rows.Clear();
             this.lblFindDescribe.Text = "共检索到数据" + this._logsResult.Count + "行";
@@ -166,7 +203,12 @@ namespace LogAnalyzer
             Common.Config.BeginTime = this.dtpBeginTime.Value;
             Common.Config.EndTime = this.dtpEndTime.Value;
             Common.Config.Keywords = this.txtKeywords.Text;
+            Common.Config.IgnoreCase = this.ckxIgnoreCase.Checked;
             Common.Config.Type = (LogTypes)Enum.Parse(typeof(LogTypes), this.cbxTypes.Text);
+            Common.Config.EnabledNearFind = this.ckxEnabledNearFind.Checked;
+            Common.Config.NearFindKeywords = this.txtNearFindKeywords.Text;
+            Common.Config.NearFindRegion = (int)this.nudNearFindRegion.Value;
+            Common.Config.Save(Common.ConfigPath);
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -181,6 +223,8 @@ namespace LogAnalyzer
                         dialog.FileName = "检索数据";
                         if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
+                            if (File.Exists(dialog.FileName))
+                                File.Delete(dialog.FileName);
                             Logs log = new Logs(dialog.FileName, 0);
                             foreach (var item in this._logsResult)
                                 log.WriteLine(item.Time, item.Type != LogTypes.All && item.Type != LogTypes.Normal ? item.Type.ToString() + ":" : "" + item.Describe);

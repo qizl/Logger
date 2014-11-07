@@ -42,12 +42,12 @@
             this.dtpBeginTime = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ckxIgnoreCase = new System.Windows.Forms.CheckBox();
             this.cbxTypes = new System.Windows.Forms.ComboBox();
             this.txtKeywords = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabResultAnaylze = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgvResult = new System.Windows.Forms.DataGridView();
@@ -59,6 +59,17 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabFindsAdvanced = new System.Windows.Forms.TabControl();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.ckxEnabledNearFind = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtNearFindKeywords = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.nudNearFindRegion = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
             this.plHead.SuspendLayout();
             this.plBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -72,6 +83,10 @@
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
             this.plFoot.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabFindsAdvanced.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNearFindRegion)).BeginInit();
             this.SuspendLayout();
             // 
             // plHead
@@ -82,7 +97,7 @@
             this.plHead.Dock = System.Windows.Forms.DockStyle.Top;
             this.plHead.Location = new System.Drawing.Point(0, 0);
             this.plHead.Name = "plHead";
-            this.plHead.Size = new System.Drawing.Size(1046, 121);
+            this.plHead.Size = new System.Drawing.Size(1084, 121);
             this.plHead.TabIndex = 0;
             // 
             // lblOpenFileDescribe
@@ -120,7 +135,7 @@
             this.plBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.plBody.Location = new System.Drawing.Point(0, 121);
             this.plBody.Name = "plBody";
-            this.plBody.Size = new System.Drawing.Size(1046, 509);
+            this.plBody.Size = new System.Drawing.Size(1084, 629);
             this.plBody.TabIndex = 1;
             // 
             // splitContainer1
@@ -138,8 +153,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabResultAnaylze);
-            this.splitContainer1.Size = new System.Drawing.Size(1046, 509);
-            this.splitContainer1.SplitterDistance = 200;
+            this.splitContainer1.Size = new System.Drawing.Size(1084, 629);
+            this.splitContainer1.SplitterDistance = 250;
             this.splitContainer1.TabIndex = 2;
             // 
             // tabFinds
@@ -152,7 +167,7 @@
             this.tabFinds.Location = new System.Drawing.Point(0, 0);
             this.tabFinds.Name = "tabFinds";
             this.tabFinds.SelectedIndex = 0;
-            this.tabFinds.Size = new System.Drawing.Size(1046, 200);
+            this.tabFinds.Size = new System.Drawing.Size(1084, 250);
             this.tabFinds.TabIndex = 2;
             // 
             // tabPage1
@@ -164,7 +179,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1038, 166);
+            this.tabPage1.Size = new System.Drawing.Size(1076, 166);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "时间段检索";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -207,18 +222,31 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.ckxIgnoreCase);
             this.tabPage2.Controls.Add(this.cbxTypes);
             this.tabPage2.Controls.Add(this.txtKeywords);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1038, 171);
+            this.tabPage2.Size = new System.Drawing.Size(1076, 166);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "关键字检索";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // ckxIgnoreCase
+            // 
+            this.ckxIgnoreCase.AutoSize = true;
+            this.ckxIgnoreCase.Checked = true;
+            this.ckxIgnoreCase.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckxIgnoreCase.Location = new System.Drawing.Point(139, 101);
+            this.ckxIgnoreCase.Name = "ckxIgnoreCase";
+            this.ckxIgnoreCase.Size = new System.Drawing.Size(107, 22);
+            this.ckxIgnoreCase.TabIndex = 7;
+            this.ckxIgnoreCase.Text = "忽略大小写";
+            this.ckxIgnoreCase.UseVisualStyleBackColor = true;
             // 
             // cbxTypes
             // 
@@ -228,7 +256,7 @@
             "All",
             "Normal",
             "Error"});
-            this.cbxTypes.Location = new System.Drawing.Point(139, 107);
+            this.cbxTypes.Location = new System.Drawing.Point(139, 128);
             this.cbxTypes.Name = "cbxTypes";
             this.cbxTypes.Size = new System.Drawing.Size(121, 26);
             this.cbxTypes.TabIndex = 6;
@@ -254,7 +282,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(45, 111);
+            this.label5.Location = new System.Drawing.Point(45, 132);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 18);
             this.label5.TabIndex = 1;
@@ -269,15 +297,6 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "关键字：";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1038, 171);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "高级检索";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // tabResultAnaylze
             // 
             this.tabResultAnaylze.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
@@ -287,7 +306,7 @@
             this.tabResultAnaylze.Location = new System.Drawing.Point(0, 0);
             this.tabResultAnaylze.Name = "tabResultAnaylze";
             this.tabResultAnaylze.SelectedIndex = 0;
-            this.tabResultAnaylze.Size = new System.Drawing.Size(1046, 305);
+            this.tabResultAnaylze.Size = new System.Drawing.Size(1084, 375);
             this.tabResultAnaylze.TabIndex = 6;
             // 
             // tabPage4
@@ -297,7 +316,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 30);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1038, 271);
+            this.tabPage4.Size = new System.Drawing.Size(1076, 341);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "检索结果";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -316,7 +335,7 @@
             this.dgvResult.Name = "dgvResult";
             this.dgvResult.RowHeadersWidth = 50;
             this.dgvResult.RowTemplate.Height = 23;
-            this.dgvResult.Size = new System.Drawing.Size(1032, 144);
+            this.dgvResult.Size = new System.Drawing.Size(1070, 214);
             this.dgvResult.TabIndex = 7;
             this.dgvResult.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvResult_RowPostPaint);
             // 
@@ -343,9 +362,9 @@
             this.plFoot.Controls.Add(this.btnExport);
             this.plFoot.Controls.Add(this.btnFind);
             this.plFoot.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.plFoot.Location = new System.Drawing.Point(3, 147);
+            this.plFoot.Location = new System.Drawing.Point(3, 217);
             this.plFoot.Name = "plFoot";
-            this.plFoot.Size = new System.Drawing.Size(1032, 121);
+            this.plFoot.Size = new System.Drawing.Size(1070, 121);
             this.plFoot.TabIndex = 0;
             // 
             // lblFindDescribe
@@ -387,11 +406,122 @@
             this.tabPage5.Text = "数据分析";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tabFindsAdvanced);
+            this.tabPage3.Location = new System.Drawing.Point(4, 30);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1076, 216);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "高级检索";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabFindsAdvanced
+            // 
+            this.tabFindsAdvanced.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
+            this.tabFindsAdvanced.Controls.Add(this.tabPage6);
+            this.tabFindsAdvanced.Controls.Add(this.tabPage7);
+            this.tabFindsAdvanced.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabFindsAdvanced.Location = new System.Drawing.Point(0, 0);
+            this.tabFindsAdvanced.Name = "tabFindsAdvanced";
+            this.tabFindsAdvanced.SelectedIndex = 0;
+            this.tabFindsAdvanced.Size = new System.Drawing.Size(1076, 216);
+            this.tabFindsAdvanced.TabIndex = 0;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.nudNearFindRegion);
+            this.tabPage6.Controls.Add(this.txtNearFindKeywords);
+            this.tabPage6.Controls.Add(this.label7);
+            this.tabPage6.Controls.Add(this.label8);
+            this.tabPage6.Controls.Add(this.label9);
+            this.tabPage6.Controls.Add(this.label6);
+            this.tabPage6.Controls.Add(this.ckxEnabledNearFind);
+            this.tabPage6.Location = new System.Drawing.Point(4, 30);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1068, 182);
+            this.tabPage6.TabIndex = 0;
+            this.tabPage6.Text = "关键字临近检索";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 30);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(1068, 182);
+            this.tabPage7.TabIndex = 1;
+            this.tabPage7.Text = "插件处理";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // ckxEnabledNearFind
+            // 
+            this.ckxEnabledNearFind.AutoSize = true;
+            this.ckxEnabledNearFind.Location = new System.Drawing.Point(45, 22);
+            this.ckxEnabledNearFind.Name = "ckxEnabledNearFind";
+            this.ckxEnabledNearFind.Size = new System.Drawing.Size(59, 22);
+            this.ckxEnabledNearFind.TabIndex = 8;
+            this.ckxEnabledNearFind.Text = "启用";
+            this.ckxEnabledNearFind.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(45, 146);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 18);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "范围：";
+            // 
+            // txtNearFindKeywords
+            // 
+            this.txtNearFindKeywords.Location = new System.Drawing.Point(138, 52);
+            this.txtNearFindKeywords.Multiline = true;
+            this.txtNearFindKeywords.Name = "txtNearFindKeywords";
+            this.txtNearFindKeywords.Size = new System.Drawing.Size(640, 76);
+            this.txtNearFindKeywords.TabIndex = 12;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(784, 110);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(162, 18);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "* 使用逗号分隔关键字";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(45, 56);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(72, 18);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "关键字：";
+            // 
+            // nudNearFindRegion
+            // 
+            this.nudNearFindRegion.Location = new System.Drawing.Point(138, 142);
+            this.nudNearFindRegion.Name = "nudNearFindRegion";
+            this.nudNearFindRegion.Size = new System.Drawing.Size(120, 26);
+            this.nudNearFindRegion.TabIndex = 13;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(258, 146);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(24, 18);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "行";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 630);
+            this.ClientSize = new System.Drawing.Size(1084, 750);
             this.Controls.Add(this.plBody);
             this.Controls.Add(this.plHead);
             this.Font = new System.Drawing.Font("Arial", 12F);
@@ -418,6 +548,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).EndInit();
             this.plFoot.ResumeLayout(false);
             this.plFoot.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabFindsAdvanced.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudNearFindRegion)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -432,7 +567,6 @@
         private System.Windows.Forms.TabControl tabFinds;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabControl tabResultAnaylze;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Panel plFoot;
@@ -454,6 +588,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvResultclmTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvResultclmType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvResultclmDescribe;
+        private System.Windows.Forms.CheckBox ckxIgnoreCase;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabControl tabFindsAdvanced;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.CheckBox ckxEnabledNearFind;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.NumericUpDown nudNearFindRegion;
+        private System.Windows.Forms.TextBox txtNearFindKeywords;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label6;
     }
 }
 
