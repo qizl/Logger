@@ -9,16 +9,21 @@ namespace LogAnalyzer.Models
 {
     public class Config
     {
+        #region 时间段检索属性
         public DateTime BeginTime { get; set; }
         public DateTime EndTime { get; set; }
+        #endregion
 
+        #region 关键字检索属性
         public string Keywords { get; set; }
         public LogTypes Type { get; set; }
         /// <summary>
         /// 是否忽略大小写
         /// </summary>
         public bool IgnoreCase { get; set; }
+        #endregion
 
+        #region 临近检索属性
         /// <summary>
         /// 启用临近检索  
         /// </summary>
@@ -33,6 +38,19 @@ namespace LogAnalyzer.Models
         /// 临近检索结果是否包含使用临近关键字检索到的行
         /// </summary>
         public bool IncludeNearKeywords { get; set; }
+        #endregion
+
+        #region 日志监听属性
+        /// <summary>
+        /// 监听文件夹
+        /// </summary>
+        public string LogsFolder { get; set; }
+        /// <summary>
+        /// 自动加载间隔
+        /// s
+        /// </summary>
+        public int LogChangeUpdateInterval { get; set; }
+        #endregion
 
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }

@@ -14,16 +14,31 @@ namespace LogAnalyzer
 {
     public partial class FormMain : Form
     {
-        private string[] _logdFilesPath = null;
+        #region Members
+        private string[] _logdFilesPath;
         private List<Log> _logs = new List<Log>();
 
         private List<Log> _logsResult = new List<Log>();
 
+        /// <summary>
+        /// 日志监听器
+        /// </summary>
+        private FileSystemWatcher _watcher;
+        private delegate void ArgsStrHandler(string str);
+        /// <summary>
+        /// 日志监听 - 上次加载日志的时间
+        /// </summary>
+        private DateTime _lastUpdateTime = DateTime.Now;
+        #endregion
+
+        #region Structures
         public FormMain()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Formload
         private void FormMain_Load(object sender, EventArgs e)
         {
             this.initialize();
@@ -46,8 +61,11 @@ namespace LogAnalyzer
             this.nudNearFindRegion.Value = Common.Config.NearFindRegion;
             this.ckxIncludeKeywords.Checked = Common.Config.IncludeKeywords;
             this.ckxIncludeNearKeywords.Checked = Common.Config.IncludeNearKeywords;
+            this.txtLogsFolder.Text = Common.Config.LogsFolder;
         }
+        #endregion
 
+        #region Methods Source Files Controls
         private void btnOpenFiles_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dialog = new OpenFileDialog())
@@ -92,7 +110,16 @@ namespace LogAnalyzer
                 }
             size = size / 1024f / 1024f;
 
-            this.lblOpenFileDescribe.Text = "共打开" + amounts + "个文件，读取到日志数据" + this._logs.Count + "行，总字节大小" + size + "M";
+            if (this._watcher != null && this._watcher.EnableRaisingEvents)
+            {
+                // 显示监听文件信息
+                this.lblOpenFileDescribe.Text = "正在监听文件夹:" + this.txtLogsFolder.Text + "...";
+            }
+            else
+            {
+                // 显示手动打开文件信息
+                this.lblOpenFileDescribe.Text = "共打开" + amounts + "个文件，读取到日志数据" + this._logs.Count + "行，总字节大小" + size + "M";
+            }
 
             this.txtKeywords.ResetText();
             this.cbxTypes.SelectedIndex = 0;
@@ -110,12 +137,21 @@ namespace LogAnalyzer
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.close();
+        }
+        /// <summary>
+        /// 清空检索缓存
+        /// </summary>
+        void close()
+        {
             this._logdFilesPath = null;
             this._logs.Clear();
             this._logsResult.Clear();
             this.bindingDatas();
         }
+        #endregion
 
+        #region Methods Find
         /// <summary>
         /// 重置查询时间段
         /// </summary>
@@ -129,6 +165,17 @@ namespace LogAnalyzer
                 this.dtpBeginTime.Value = this._logs.First().Time;
                 this.dtpEndTime.Value = this._logs.Last().Time;
             }
+        }
+
+        private void dgvResult_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            SolidBrush b = new SolidBrush(this.dgvResult.RowHeadersDefaultCellStyle.ForeColor);
+            e.Graphics.DrawString(
+                (e.RowIndex + 1).ToString(System.Globalization.CultureInfo.CurrentUICulture),
+                this.dgvResult.DefaultCellStyle.Font,
+                b,
+                e.RowBounds.Location.X + 10,
+                e.RowBounds.Location.Y + 4);
         }
 
         private void btnFind_Click(object sender, EventArgs e)
@@ -214,7 +261,7 @@ namespace LogAnalyzer
             if (this._logsResult.Count == 0)
                 return;
 
-            this._logsResult = this._logsResult.OrderBy(l => l.Time).ToList();
+            this._logsResult = this._logsResult.OrderByDescending(l => l.Time).ToList();
 
             foreach (var item in this._logsResult)
                 this.dgvResult.Rows.Add(string.Format("{0:D4}-{1:D2}-{2:D2} {3:D2}:{4:D2}:{5:D2} {6:D3}", new object[] { item.Time.Year, item.Time.Month, item.Time.Day, item.Time.Hour, item.Time.Minute, item.Time.Second, item.Time.Millisecond }), item.Type, item.Describe);
@@ -264,16 +311,90 @@ namespace LogAnalyzer
 
             this.bindingDatas();
         }
+        #endregion
 
-        private void dgvResult_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        #region Methods Logs Listen
+        private void btnChooseLogsFolder_Click(object sender, EventArgs e)
         {
-            SolidBrush b = new SolidBrush(this.dgvResult.RowHeadersDefaultCellStyle.ForeColor);
-            e.Graphics.DrawString(
-                (e.RowIndex + 1).ToString(System.Globalization.CultureInfo.CurrentUICulture),
-                this.dgvResult.DefaultCellStyle.Font,
-                b,
-                e.RowBounds.Location.X + 10,
-                e.RowBounds.Location.Y + 4);
+            this.chooseLogsFolder();
         }
+
+        private void chooseLogsFolder()
+        {
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() == DialogResult.OK)
+                this.txtLogsFolder.Text = dialog.SelectedPath;
+        }
+
+        private void btnStartListen_Click(object sender, EventArgs e)
+        {
+            if (!Directory.Exists(this.txtLogsFolder.Text))
+                return;
+            if (this._watcher == null)
+            {
+                Common.Config.LogsFolder = this.txtLogsFolder.Text;
+                this._watcher = new FileSystemWatcher(this.txtLogsFolder.Text);
+            }
+            if (!this._watcher.EnableRaisingEvents)
+            {
+                this._watcher.Changed += watcher_Changed;
+                this._watcher.Created += watcher_Created;
+                this._watcher.EnableRaisingEvents = true;
+            }
+            this.close();
+        }
+        void watcher_Created(object sender, FileSystemEventArgs e)
+        {
+            this.Invoke(new ArgsStrHandler(this.loadFile), e.FullPath);
+        }
+        void watcher_Changed(object sender, FileSystemEventArgs e)
+        {
+            this.Invoke(new ArgsStrHandler(this.loadFile), e.FullPath);
+        }
+        void loadFile(string fileName)
+        {
+            int interval = (int)(DateTime.Now - this._lastUpdateTime).TotalSeconds;
+            if (interval > Common.Config.LogChangeUpdateInterval && File.Exists(fileName))
+            {
+                this._lastUpdateTime = DateTime.Now;
+
+                this._logdFilesPath = new string[] { fileName };
+
+                this.readLogs();
+                this.bindingDatas();
+            }
+        }
+
+        private void btnStopListen_Click(object sender, EventArgs e)
+        {
+            this.stopListen();
+        }
+        void stopListen()
+        {
+            if (this._watcher != null && this._watcher.EnableRaisingEvents)
+            {
+                this._watcher.EnableRaisingEvents = false;
+                this._watcher.Changed -= watcher_Changed;
+                this._watcher.Created -= watcher_Created;
+            }
+            this.lblOpenFileDescribe.Text = "共打开0个文件，读取到日志数据0行，总字节大小0M";
+        }
+
+        private void btnRefreshListen_Click(object sender, EventArgs e)
+        {
+            if (this._watcher != null && this._watcher.EnableRaisingEvents)
+            {
+                this._lastUpdateTime.AddSeconds(-Common.Config.LogChangeUpdateInterval);
+                this.loadFile(this._logdFilesPath[0]);
+            }
+        }
+        #endregion
+
+        #region Formclosing
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.stopListen();
+        }
+        #endregion
     }
 }

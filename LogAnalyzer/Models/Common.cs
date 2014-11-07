@@ -17,10 +17,11 @@ namespace LogAnalyzer.Models
             EndTime = DateTime.Now,
             Keywords = string.Empty,
             IgnoreCase = true,
+            Type = Logger.LogTypes.Normal,
             NearFindRegion = 5,
             IncludeKeywords = true,
             IncludeNearKeywords = true,
-            Type = Logger.LogTypes.Normal,
+            LogChangeUpdateInterval = 5,
             CreateTime = DateTime.Now,
             UpdateTime = DateTime.Now
         };

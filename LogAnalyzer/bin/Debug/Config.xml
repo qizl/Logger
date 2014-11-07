@@ -1,8 +1,8 @@
 ﻿<Complex name="Root" type="LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
   <Properties>
-    <Simple name="BeginTime" value="11/06/2014 16:12:03" />
-    <Simple name="EndTime" value="11/07/2014 07:45:05" />
-    <Simple name="Keywords" value="error" />
+    <Simple name="BeginTime" value="11/07/2014 23:31:56" />
+    <Simple name="EndTime" value="11/07/2014 23:31:56" />
+    <Simple name="Keywords" value="" />
     <Simple name="Type" value="All" />
     <Simple name="IgnoreCase" value="True" />
     <Simple name="EnabledNearFind" value="False" />
@@ -10,7 +10,9 @@
     <Simple name="NearFindRegion" value="5" />
     <Simple name="IncludeKeywords" value="False" />
     <Simple name="IncludeNearKeywords" value="True" />
+    <Simple name="LogsFolder" value="E:\桌面" />
+    <Simple name="LogChangeUpdateInterval" value="5" />
     <Simple name="CreateTime" value="11/07/2014 11:56:37" />
-    <Simple name="UpdateTime" value="11/07/2014 13:25:34" />
+    <Simple name="UpdateTime" value="11/07/2014 23:33:10" />
   </Properties>
 </Complex>

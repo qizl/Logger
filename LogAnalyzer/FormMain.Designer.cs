@@ -37,6 +37,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabFinds = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnResetFindTime = new System.Windows.Forms.Button();
             this.dtpEndTime = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpBeginTime = new System.Windows.Forms.DateTimePicker();
@@ -51,6 +52,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabFindsAdvanced = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.ckxIncludeNearKeywords = new System.Windows.Forms.CheckBox();
+            this.ckxIncludeKeywords = new System.Windows.Forms.CheckBox();
             this.nudNearFindRegion = new System.Windows.Forms.NumericUpDown();
             this.txtNearFindKeywords = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -58,7 +61,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ckxEnabledNearFind = new System.Windows.Forms.CheckBox();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnStopListen = new System.Windows.Forms.Button();
+            this.btnStartListen = new System.Windows.Forms.Button();
+            this.btnChooseLogsFolder = new System.Windows.Forms.Button();
+            this.txtLogsFolder = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.tabResultAnaylze = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgvResult = new System.Windows.Forms.DataGridView();
@@ -67,14 +77,11 @@
             this.dgvResultclmDescribe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plFoot = new System.Windows.Forms.Panel();
             this.lblFindDescribe = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.btnResetFindTime = new System.Windows.Forms.Button();
-            this.ckxIncludeKeywords = new System.Windows.Forms.CheckBox();
-            this.ckxIncludeNearKeywords = new System.Windows.Forms.CheckBox();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.btnReset = new System.Windows.Forms.Button();
+            this.btnRefreshListen = new System.Windows.Forms.Button();
             this.plHead.SuspendLayout();
             this.plBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -88,6 +95,7 @@
             this.tabFindsAdvanced.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNearFindRegion)).BeginInit();
+            this.tabPage9.SuspendLayout();
             this.tabResultAnaylze.SuspendLayout();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
@@ -168,6 +176,7 @@
             this.tabFinds.Controls.Add(this.tabPage1);
             this.tabFinds.Controls.Add(this.tabPage2);
             this.tabFinds.Controls.Add(this.tabPage3);
+            this.tabFinds.Controls.Add(this.tabPage9);
             this.tabFinds.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabFinds.Location = new System.Drawing.Point(0, 0);
             this.tabFinds.Name = "tabFinds";
@@ -189,6 +198,17 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "时间段检索";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnResetFindTime
+            // 
+            this.btnResetFindTime.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnResetFindTime.Location = new System.Drawing.Point(139, 92);
+            this.btnResetFindTime.Name = "btnResetFindTime";
+            this.btnResetFindTime.Size = new System.Drawing.Size(75, 26);
+            this.btnResetFindTime.TabIndex = 5;
+            this.btnResetFindTime.Text = "重置";
+            this.btnResetFindTime.UseVisualStyleBackColor = true;
+            this.btnResetFindTime.Click += new System.EventHandler(this.btnResetFindTime_Click);
             // 
             // dtpEndTime
             // 
@@ -234,10 +254,10 @@
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 30);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1076, 216);
+            this.tabPage2.Size = new System.Drawing.Size(1076, 221);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "关键字检索";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -306,9 +326,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.tabFindsAdvanced);
-            this.tabPage3.Location = new System.Drawing.Point(4, 30);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1076, 216);
+            this.tabPage3.Size = new System.Drawing.Size(1076, 221);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "高级检索";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -323,7 +343,7 @@
             this.tabFindsAdvanced.Location = new System.Drawing.Point(0, 0);
             this.tabFindsAdvanced.Name = "tabFindsAdvanced";
             this.tabFindsAdvanced.SelectedIndex = 0;
-            this.tabFindsAdvanced.Size = new System.Drawing.Size(1076, 216);
+            this.tabFindsAdvanced.Size = new System.Drawing.Size(1076, 221);
             this.tabFindsAdvanced.TabIndex = 0;
             // 
             // tabPage6
@@ -340,10 +360,34 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 30);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1068, 182);
+            this.tabPage6.Size = new System.Drawing.Size(1068, 187);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "临近检索";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // ckxIncludeNearKeywords
+            // 
+            this.ckxIncludeNearKeywords.AutoSize = true;
+            this.ckxIncludeNearKeywords.Checked = true;
+            this.ckxIncludeNearKeywords.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckxIncludeNearKeywords.Location = new System.Drawing.Point(427, 144);
+            this.ckxIncludeNearKeywords.Name = "ckxIncludeNearKeywords";
+            this.ckxIncludeNearKeywords.Size = new System.Drawing.Size(139, 22);
+            this.ckxIncludeNearKeywords.TabIndex = 14;
+            this.ckxIncludeNearKeywords.Text = "包含临近关键字";
+            this.ckxIncludeNearKeywords.UseVisualStyleBackColor = true;
+            // 
+            // ckxIncludeKeywords
+            // 
+            this.ckxIncludeKeywords.AutoSize = true;
+            this.ckxIncludeKeywords.Checked = true;
+            this.ckxIncludeKeywords.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckxIncludeKeywords.Location = new System.Drawing.Point(317, 144);
+            this.ckxIncludeKeywords.Name = "ckxIncludeKeywords";
+            this.ckxIncludeKeywords.Size = new System.Drawing.Size(107, 22);
+            this.ckxIncludeKeywords.TabIndex = 14;
+            this.ckxIncludeKeywords.Text = "包含关键字";
+            this.ckxIncludeKeywords.UseVisualStyleBackColor = true;
             // 
             // nudNearFindRegion
             // 
@@ -412,15 +456,91 @@
             this.ckxEnabledNearFind.Text = "启用（在关键字检索所设定的关键字查询结果附近进行检索）";
             this.ckxEnabledNearFind.UseVisualStyleBackColor = true;
             // 
+            // tabPage8
+            // 
+            this.tabPage8.Location = new System.Drawing.Point(4, 25);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(1068, 192);
+            this.tabPage8.TabIndex = 2;
+            this.tabPage8.Text = "正则匹配";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
             // tabPage7
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 30);
+            this.tabPage7.Location = new System.Drawing.Point(4, 25);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1068, 182);
+            this.tabPage7.Size = new System.Drawing.Size(1068, 192);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "插件处理";
             this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.btnRefreshListen);
+            this.tabPage9.Controls.Add(this.btnStopListen);
+            this.tabPage9.Controls.Add(this.btnStartListen);
+            this.tabPage9.Controls.Add(this.btnChooseLogsFolder);
+            this.tabPage9.Controls.Add(this.txtLogsFolder);
+            this.tabPage9.Controls.Add(this.label10);
+            this.tabPage9.Location = new System.Drawing.Point(4, 30);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Size = new System.Drawing.Size(1076, 216);
+            this.tabPage9.TabIndex = 3;
+            this.tabPage9.Text = "日志监听";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // btnStopListen
+            // 
+            this.btnStopListen.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnStopListen.Location = new System.Drawing.Point(132, 112);
+            this.btnStopListen.Name = "btnStopListen";
+            this.btnStopListen.Size = new System.Drawing.Size(75, 26);
+            this.btnStopListen.TabIndex = 7;
+            this.btnStopListen.Text = "停止";
+            this.btnStopListen.UseVisualStyleBackColor = true;
+            this.btnStopListen.Click += new System.EventHandler(this.btnStopListen_Click);
+            // 
+            // btnStartListen
+            // 
+            this.btnStartListen.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnStartListen.Location = new System.Drawing.Point(51, 112);
+            this.btnStartListen.Name = "btnStartListen";
+            this.btnStartListen.Size = new System.Drawing.Size(75, 26);
+            this.btnStartListen.TabIndex = 7;
+            this.btnStartListen.Text = "启动";
+            this.btnStartListen.UseVisualStyleBackColor = true;
+            this.btnStartListen.Click += new System.EventHandler(this.btnStartListen_Click);
+            // 
+            // btnChooseLogsFolder
+            // 
+            this.btnChooseLogsFolder.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnChooseLogsFolder.Location = new System.Drawing.Point(139, 50);
+            this.btnChooseLogsFolder.Name = "btnChooseLogsFolder";
+            this.btnChooseLogsFolder.Size = new System.Drawing.Size(75, 26);
+            this.btnChooseLogsFolder.TabIndex = 6;
+            this.btnChooseLogsFolder.Text = "浏览...";
+            this.btnChooseLogsFolder.UseVisualStyleBackColor = true;
+            this.btnChooseLogsFolder.Click += new System.EventHandler(this.btnChooseLogsFolder_Click);
+            // 
+            // txtLogsFolder
+            // 
+            this.txtLogsFolder.BackColor = System.Drawing.Color.White;
+            this.txtLogsFolder.Location = new System.Drawing.Point(139, 18);
+            this.txtLogsFolder.Name = "txtLogsFolder";
+            this.txtLogsFolder.ReadOnly = true;
+            this.txtLogsFolder.Size = new System.Drawing.Size(640, 26);
+            this.txtLogsFolder.TabIndex = 3;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(45, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(88, 18);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "日志目录：";
             // 
             // tabResultAnaylze
             // 
@@ -502,6 +622,16 @@
             this.lblFindDescribe.TabIndex = 10;
             this.lblFindDescribe.Text = "共检索到日志数据0行";
             // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(403, 22);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(119, 43);
+            this.btnReset.TabIndex = 9;
+            this.btnReset.Text = "重置";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // btnExport
             // 
             this.btnExport.Location = new System.Drawing.Point(224, 22);
@@ -532,60 +662,16 @@
             this.tabPage5.Text = "数据分析";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // btnResetFindTime
+            // btnRefreshListen
             // 
-            this.btnResetFindTime.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnResetFindTime.Location = new System.Drawing.Point(139, 101);
-            this.btnResetFindTime.Name = "btnResetFindTime";
-            this.btnResetFindTime.Size = new System.Drawing.Size(75, 26);
-            this.btnResetFindTime.TabIndex = 5;
-            this.btnResetFindTime.Text = "重置";
-            this.btnResetFindTime.UseVisualStyleBackColor = true;
-            this.btnResetFindTime.Click += new System.EventHandler(this.btnResetFindTime_Click);
-            // 
-            // ckxIncludeKeywords
-            // 
-            this.ckxIncludeKeywords.AutoSize = true;
-            this.ckxIncludeKeywords.Checked = true;
-            this.ckxIncludeKeywords.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckxIncludeKeywords.Location = new System.Drawing.Point(317, 144);
-            this.ckxIncludeKeywords.Name = "ckxIncludeKeywords";
-            this.ckxIncludeKeywords.Size = new System.Drawing.Size(107, 22);
-            this.ckxIncludeKeywords.TabIndex = 14;
-            this.ckxIncludeKeywords.Text = "包含关键字";
-            this.ckxIncludeKeywords.UseVisualStyleBackColor = true;
-            // 
-            // ckxIncludeNearKeywords
-            // 
-            this.ckxIncludeNearKeywords.AutoSize = true;
-            this.ckxIncludeNearKeywords.Checked = true;
-            this.ckxIncludeNearKeywords.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckxIncludeNearKeywords.Location = new System.Drawing.Point(427, 144);
-            this.ckxIncludeNearKeywords.Name = "ckxIncludeNearKeywords";
-            this.ckxIncludeNearKeywords.Size = new System.Drawing.Size(139, 22);
-            this.ckxIncludeNearKeywords.TabIndex = 14;
-            this.ckxIncludeNearKeywords.Text = "包含临近关键字";
-            this.ckxIncludeNearKeywords.UseVisualStyleBackColor = true;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 30);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1068, 182);
-            this.tabPage8.TabIndex = 2;
-            this.tabPage8.Text = "正则匹配";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // btnReset
-            // 
-            this.btnReset.Location = new System.Drawing.Point(403, 22);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(119, 43);
-            this.btnReset.TabIndex = 9;
-            this.btnReset.Text = "重置";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.btnRefreshListen.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnRefreshListen.Location = new System.Drawing.Point(213, 112);
+            this.btnRefreshListen.Name = "btnRefreshListen";
+            this.btnRefreshListen.Size = new System.Drawing.Size(75, 26);
+            this.btnRefreshListen.TabIndex = 7;
+            this.btnRefreshListen.Text = "刷新";
+            this.btnRefreshListen.UseVisualStyleBackColor = true;
+            this.btnRefreshListen.Click += new System.EventHandler(this.btnRefreshListen_Click);
             // 
             // FormMain
             // 
@@ -600,6 +686,7 @@
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "日志分析器";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.plHead.ResumeLayout(false);
             this.plHead.PerformLayout();
@@ -618,6 +705,8 @@
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudNearFindRegion)).EndInit();
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
             this.tabResultAnaylze.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).EndInit();
@@ -675,6 +764,13 @@
         private System.Windows.Forms.CheckBox ckxIncludeKeywords;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.Button btnChooseLogsFolder;
+        private System.Windows.Forms.TextBox txtLogsFolder;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnStopListen;
+        private System.Windows.Forms.Button btnStartListen;
+        private System.Windows.Forms.Button btnRefreshListen;
     }
 }
 
