@@ -333,6 +333,8 @@ namespace LogAnalyzer
             if (this._watcher == null)
             {
                 Common.Config.LogsFolder = this.txtLogsFolder.Text;
+                this.saveConfig();
+
                 this._watcher = new FileSystemWatcher(this.txtLogsFolder.Text);
             }
             if (!this._watcher.EnableRaisingEvents)
