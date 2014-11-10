@@ -387,7 +387,8 @@ namespace LogAnalyzer
             if (this._watcher != null && this._watcher.EnableRaisingEvents)
             {
                 this._lastUpdateTime.AddSeconds(-Common.Config.LogChangeUpdateInterval);
-                this.loadFile(this._logdFilesPath[0]);
+                if (this._logdFilesPath != null && this._logdFilesPath.Length > 0)
+                    this.loadFile(this._logdFilesPath[0]);
             }
         }
         #endregion

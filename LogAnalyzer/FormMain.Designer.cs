@@ -64,6 +64,7 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnRefreshListen = new System.Windows.Forms.Button();
             this.btnStopListen = new System.Windows.Forms.Button();
             this.btnStartListen = new System.Windows.Forms.Button();
             this.btnChooseLogsFolder = new System.Windows.Forms.Button();
@@ -81,7 +82,6 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.btnRefreshListen = new System.Windows.Forms.Button();
             this.plHead.SuspendLayout();
             this.plBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -484,12 +484,23 @@
             this.tabPage9.Controls.Add(this.btnChooseLogsFolder);
             this.tabPage9.Controls.Add(this.txtLogsFolder);
             this.tabPage9.Controls.Add(this.label10);
-            this.tabPage9.Location = new System.Drawing.Point(4, 30);
+            this.tabPage9.Location = new System.Drawing.Point(4, 25);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1076, 216);
+            this.tabPage9.Size = new System.Drawing.Size(1076, 221);
             this.tabPage9.TabIndex = 3;
             this.tabPage9.Text = "日志监听";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // btnRefreshListen
+            // 
+            this.btnRefreshListen.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnRefreshListen.Location = new System.Drawing.Point(213, 112);
+            this.btnRefreshListen.Name = "btnRefreshListen";
+            this.btnRefreshListen.Size = new System.Drawing.Size(75, 26);
+            this.btnRefreshListen.TabIndex = 7;
+            this.btnRefreshListen.Text = "刷新";
+            this.btnRefreshListen.UseVisualStyleBackColor = true;
+            this.btnRefreshListen.Click += new System.EventHandler(this.btnRefreshListen_Click);
             // 
             // btnStopListen
             // 
@@ -529,7 +540,6 @@
             this.txtLogsFolder.BackColor = System.Drawing.Color.White;
             this.txtLogsFolder.Location = new System.Drawing.Point(139, 18);
             this.txtLogsFolder.Name = "txtLogsFolder";
-            this.txtLogsFolder.ReadOnly = true;
             this.txtLogsFolder.Size = new System.Drawing.Size(640, 26);
             this.txtLogsFolder.TabIndex = 3;
             // 
@@ -661,17 +671,6 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "数据分析";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // btnRefreshListen
-            // 
-            this.btnRefreshListen.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnRefreshListen.Location = new System.Drawing.Point(213, 112);
-            this.btnRefreshListen.Name = "btnRefreshListen";
-            this.btnRefreshListen.Size = new System.Drawing.Size(75, 26);
-            this.btnRefreshListen.TabIndex = 7;
-            this.btnRefreshListen.Text = "刷新";
-            this.btnRefreshListen.UseVisualStyleBackColor = true;
-            this.btnRefreshListen.Click += new System.EventHandler(this.btnRefreshListen_Click);
             // 
             // FormMain
             // 
