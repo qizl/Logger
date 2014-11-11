@@ -43,8 +43,9 @@ namespace LogAnalyzer.Models
         #region 日志监听属性
         /// <summary>
         /// 监听文件夹
+        /// 默认使用第一个
         /// </summary>
-        public string LogsFolder { get; set; }
+        public List<string> LogsFolders { get; set; }
         /// <summary>
         /// 自动加载间隔
         /// s

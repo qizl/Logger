@@ -22,6 +22,7 @@ namespace LogAnalyzer.Models
             IncludeKeywords = true,
             IncludeNearKeywords = true,
             LogChangeUpdateInterval = 5,
+            LogsFolders = new List<string>(),
             CreateTime = DateTime.Now,
             UpdateTime = DateTime.Now
         };

@@ -61,7 +61,12 @@ namespace LogAnalyzer
             this.nudNearFindRegion.Value = Common.Config.NearFindRegion;
             this.ckxIncludeKeywords.Checked = Common.Config.IncludeKeywords;
             this.ckxIncludeNearKeywords.Checked = Common.Config.IncludeNearKeywords;
-            this.txtLogsFolder.Text = Common.Config.LogsFolder;
+
+            if (Common.Config.LogsFolders == null)
+                Common.Config.LogsFolders = new List<string>();
+
+            this.cbxLogsFolders.Items.AddRange(Common.Config.LogsFolders.ToArray());
+            this.cbxLogsFolders.SelectedIndex = Common.Config.LogsFolders.Count - 1;
         }
         #endregion
 
@@ -113,7 +118,7 @@ namespace LogAnalyzer
             if (this._watcher != null && this._watcher.EnableRaisingEvents)
             {
                 // 显示监听文件信息
-                this.lblOpenFileDescribe.Text = "正在监听文件夹:" + this.txtLogsFolder.Text + "...";
+                this.lblOpenFileDescribe.Text = "正在监听文件夹:" + this.cbxLogsFolders.Text + "...";
             }
             else
             {
@@ -323,19 +328,25 @@ namespace LogAnalyzer
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
-                this.txtLogsFolder.Text = dialog.SelectedPath;
+            {
+                if (!this.cbxLogsFolders.Items.Contains(dialog.SelectedPath))
+                    this.cbxLogsFolders.Items.Add(dialog.SelectedPath);
+                this.cbxLogsFolders.Text = dialog.SelectedPath;
+            }
         }
 
         private void btnStartListen_Click(object sender, EventArgs e)
         {
-            if (!Directory.Exists(this.txtLogsFolder.Text))
+            if (!Directory.Exists(this.cbxLogsFolders.Text))
                 return;
             if (this._watcher == null)
             {
-                Common.Config.LogsFolder = this.txtLogsFolder.Text;
+                Common.Config.LogsFolders.Clear();
+                foreach (var item in this.cbxLogsFolders.Items)
+                    Common.Config.LogsFolders.Add(item.ToString());
                 this.saveConfig();
 
-                this._watcher = new FileSystemWatcher(this.txtLogsFolder.Text);
+                this._watcher = new FileSystemWatcher(this.cbxLogsFolders.Text);
             }
             if (!this._watcher.EnableRaisingEvents)
             {
