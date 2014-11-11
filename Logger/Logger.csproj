@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Log.cs" />
+    <Compile Include="LogCommand.cs" />
     <Compile Include="Logs.cs" />
     <Compile Include="LogTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

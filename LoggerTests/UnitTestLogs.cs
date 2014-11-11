@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Logger;
 using System.IO;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace LoggerTests
 {
@@ -32,11 +33,16 @@ namespace LoggerTests
         /// </summary>
         [TestMethod]
         public void TestWriteLine()
-        {
+       { 
             Logs log = new Logs(Path.Combine(Environment.CurrentDirectory, "Logs"));
 
+            int i = 10000;
             byte[] bs = new byte[] { 1, 2, 3, 4, 5, 6 };
-            string str = log.WriteLine(bs, "字节数组测试");
+            while (i-- > 0)
+            {
+                log.WriteLine(bs, "字节数组测试");
+            }
+            Thread.Sleep(1000000);
         }
 
         [TestMethod]

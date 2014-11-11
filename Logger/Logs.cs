@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace Logger
 {
@@ -44,8 +45,12 @@ namespace Logger
         #endregion
 
         #region Members
-
         private TripleDES _tripleDes = new TripleDES();
+
+        private static object logLocker = new object();
+        private List<LogCommand> _logs = new List<LogCommand>();
+
+        private Thread _tdMain;
 
         public struct Default
         {
@@ -100,6 +105,22 @@ namespace Logger
         #endregion
 
         #region Methods - Writers
+        private void mainThread()
+        {
+            while (this._logs.Count > 0)
+            {
+                LogCommand log = null;
+                lock (Logs.logLocker)
+                {
+                    log = this._logs.OrderBy(l => l.Time).First();
+                    this._logs.Remove(log);
+                }
+                this.writeLine(log.Describe);
+                Thread.Sleep(10);
+            }
+            this._tdMain = null;
+        }
+
         public string GetLogFileName()
         {
             string name = this.Sign + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
@@ -114,6 +135,34 @@ namespace Logger
             //time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
             return time;
+        }
+
+        private void addLogs(DateTime time, string str)
+        {
+            lock (Logs.logLocker)
+            {
+                this._logs.Add(new LogCommand() { Time = time, Describe = str });
+            }
+
+            if (this._tdMain == null)
+            {
+                this._tdMain = new Thread(this.mainThread);
+                this._tdMain.Start();
+            }
+        }
+
+        private void writeLine(string str)
+        {
+            try
+            {
+                using (StreamWriter stream = new StreamWriter(this.LogFilePath, true))
+                {
+                    stream.WriteLine(str);
+                    stream.Flush();
+                    stream.Close();
+                }
+            }
+            catch { str = "写日志失败！"; }
         }
 
         /// <summary>
@@ -151,16 +200,7 @@ namespace Logger
                 str = str.Replace(Environment.NewLine, "");
             }
 
-            try
-            {
-                using (StreamWriter stream = new StreamWriter(this.LogFilePath, true))
-                {
-                    stream.WriteLine(str);
-                    stream.Flush();
-                    stream.Close();
-                }
-            }
-            catch { str = "写日志失败！"; }
+            this.addLogs(time, str);
 
             return str;
         }
