@@ -66,7 +66,7 @@ namespace LogAnalyzer
                 Common.Config.LogsFolders = new List<string>();
 
             this.cbxLogsFolders.Items.AddRange(Common.Config.LogsFolders.ToArray());
-            this.cbxLogsFolders.SelectedIndex = Common.Config.LogsFolders.Count - 1;
+            this.cbxLogsFolders.SelectedIndex = Common.Config.LogsFolders.Count > 0 ? 0 : 1;
         }
         #endregion
 
@@ -328,11 +328,7 @@ namespace LogAnalyzer
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                if (!this.cbxLogsFolders.Items.Contains(dialog.SelectedPath))
-                    this.cbxLogsFolders.Items.Add(dialog.SelectedPath);
                 this.cbxLogsFolders.Text = dialog.SelectedPath;
-            }
         }
 
         private void btnStartListen_Click(object sender, EventArgs e)
@@ -340,14 +336,11 @@ namespace LogAnalyzer
             if (!Directory.Exists(this.cbxLogsFolders.Text))
                 return;
             if (this._watcher == null)
-            {
-                Common.Config.LogsFolders.Clear();
-                foreach (var item in this.cbxLogsFolders.Items)
-                    Common.Config.LogsFolders.Add(item.ToString());
-                this.saveConfig();
-
                 this._watcher = new FileSystemWatcher(this.cbxLogsFolders.Text);
-            }
+            this._watcher.Path = this.cbxLogsFolders.Text;
+
+            this.saveLogsFolders();
+
             if (!this._watcher.EnableRaisingEvents)
             {
                 this._watcher.Changed += watcher_Changed;
@@ -376,6 +369,42 @@ namespace LogAnalyzer
                 this.readLogs();
                 this.bindingDatas();
             }
+        }
+
+        private void saveLogsFolders()
+        {
+            /*
+             * 删除Item说中与Text重复的项，并重新加入Items
+             */
+            string text = this.cbxLogsFolders.Text;
+            if (this.cbxLogsFolders.Items.Contains(text))
+                this.cbxLogsFolders.Items.Remove(text);
+
+            /*
+             * 获取Items集合
+             */
+            List<string> folders = new List<string>();
+            folders.Add(text);
+            foreach (var item in this.cbxLogsFolders.Items)
+                if (!string.IsNullOrEmpty(item.ToString()))
+                    folders.Add(item.ToString());
+
+            this.cbxLogsFolders.Items.Add(text);
+
+
+            /*
+             * 保存文件夹
+             * 只记录7条
+             */
+            Common.Config.LogsFolders = folders.Take(7).ToList();
+            this.saveConfig();
+
+            /*
+             * 排序后的文件夹列表重新绑定到Items
+             */
+            this.cbxLogsFolders.Items.Clear();
+            this.cbxLogsFolders.Items.AddRange(Common.Config.LogsFolders.ToArray());
+            this.cbxLogsFolders.Text = text;
         }
 
         private void btnStopListen_Click(object sender, EventArgs e)
