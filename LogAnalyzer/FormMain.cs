@@ -76,6 +76,7 @@ namespace LogAnalyzer
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Multiselect = true;
+                dialog.InitialDirectory = Common.Config.LogsFolders[0];
                 dialog.Title = "请选择日志文件：";
                 dialog.Filter = "日志文件(*.log)|*.log|文本文件(*.txt)|*.txt";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -359,7 +360,7 @@ namespace LogAnalyzer
         }
         void loadFile(string fileName)
         {
-            int interval = (int)(DateTime.Now - this._lastUpdateTime).TotalSeconds;
+            int interval = (int)(DateTime.Now - this._lastUpdateTime).TotalMilliseconds;
             if (interval > Common.Config.LogChangeUpdateInterval && File.Exists(fileName))
             {
                 this._lastUpdateTime = DateTime.Now;

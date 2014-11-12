@@ -7,3 +7,4 @@ E:\PL\MyProjects\GitHub\Logger\Logger\bin\Debug\Logger.dll
 E:\PL\MyProjects\GitHub\Logger\Logger\bin\Debug\Logger.pdb
 E:\PL\MyProjects\GitHub\Logger\Logger\obj\Debug\Logger.dll
 E:\PL\MyProjects\GitHub\Logger\Logger\obj\Debug\Logger.pdb
+E:\PL\MyProjects\GitHub\Logger\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache

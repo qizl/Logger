@@ -48,7 +48,7 @@ namespace LogAnalyzer.Models
         public List<string> LogsFolders { get; set; }
         /// <summary>
         /// 自动加载间隔
-        /// s
+        /// ms
         /// </summary>
         public int LogChangeUpdateInterval { get; set; }
         #endregion
