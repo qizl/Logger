@@ -183,7 +183,7 @@ namespace Logger
                 if (this.Size > 0 && f.Length >= this.Size)
                     LogFilePath = GetLogFileName();
 
-            if (time != null && time != default(DateTime))
+            if (time != default(DateTime))
                 str = this.GetTimeString(time) + " " + str;
 
             // 判断是否需要加密字符串
@@ -239,11 +239,13 @@ namespace Logger
         public string WriteLine(byte[] bs, string remark)
         {
             StringBuilder s = new StringBuilder();
-            foreach (var b in bs)
-                s.Append("0x" + b.ToString("x2") + ",");
-            string str = ASCIIEncoding.Default.GetString(bs);
 
-            return this.WriteLine(remark + ",Bytes (" + bs.Length + "): " + s.ToString() + ",字符 (" + str.Length + "): " + str);
+            if (bs != null)
+                foreach (var b in bs)
+                    s.Append("0x" + b.ToString("x2") + ",");
+            string str = bs == null ? string.Empty : ASCIIEncoding.Default.GetString(bs);
+
+            return this.WriteLine(remark + ",Bytes (" + (bs == null ? 0 : bs.Length) + "): " + s.ToString() + ",字符 (" + str.Length + "): " + str);
         }
 
         /// <summary>
