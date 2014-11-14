@@ -21,7 +21,7 @@ namespace LogAnalyzer.Models
             NearFindRegion = 5,
             IncludeKeywords = true,
             IncludeNearKeywords = true,
-            LogChangeUpdateInterval = 5000,
+            LogChangeUpdateInterval = 500,
             LogsFolders = new List<string>(),
             CreateTime = DateTime.Now,
             UpdateTime = DateTime.Now

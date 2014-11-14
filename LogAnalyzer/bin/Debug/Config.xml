@@ -1,31 +1,23 @@
 ﻿<Complex name="Root" type="LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
   <Properties>
-    <Simple name="BeginTime" value="11/12/2014 11:39:26" />
-    <Simple name="EndTime" value="11/12/2014 11:39:26" />
+    <Simple name="BeginTime" value="11/14/2014 09:06:32" />
+    <Simple name="EndTime" value="11/14/2014 09:06:32" />
     <Simple name="Keywords" value="" />
-    <Simple name="Type" value="All" />
+    <Simple name="Type" value="Normal" />
     <Simple name="IgnoreCase" value="True" />
     <Simple name="EnabledNearFind" value="False" />
-    <Simple name="NearFindKeywords" value="入柜,cmdtype&gt;02&lt;/cmdtype" />
+    <Null name="NearFindKeywords" />
     <Simple name="NearFindRegion" value="5" />
-    <Simple name="IncludeKeywords" value="False" />
+    <Simple name="IncludeKeywords" value="True" />
     <Simple name="IncludeNearKeywords" value="True" />
     <Collection name="LogsFolders">
       <Properties>
-        <Simple name="Capacity" value="8" />
+        <Simple name="Capacity" value="0" />
       </Properties>
-      <Items>
-        <Simple value="E:\DriverGenius2013" />
-        <Simple value="E:\Movies" />
-        <Simple value="E:\Download\Tencent" />
-        <Simple value="E:\Music\iTunes" />
-        <Simple value="E:\DriverGenius2013\MyDrivers\update" />
-        <Simple value="E:\DriverGenius2013\MyDrivers" />
-        <Simple value="E:\Download\FvodPlayer_3987.com" />
-      </Items>
+      <Items />
     </Collection>
-    <Simple name="LogChangeUpdateInterval" value="5" />
-    <Simple name="CreateTime" value="11/07/2014 11:56:37" />
-    <Simple name="UpdateTime" value="11/12/2014 11:39:26" />
+    <Simple name="LogChangeUpdateInterval" value="500" />
+    <Simple name="CreateTime" value="11/14/2014 09:06:32" />
+    <Simple name="UpdateTime" value="11/14/2014 09:06:32" />
   </Properties>
 </Complex>

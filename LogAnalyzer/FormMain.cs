@@ -66,7 +66,7 @@ namespace LogAnalyzer
                 Common.Config.LogsFolders = new List<string>();
 
             this.cbxLogsFolders.Items.AddRange(Common.Config.LogsFolders.ToArray());
-            this.cbxLogsFolders.SelectedIndex = Common.Config.LogsFolders.Count > 0 ? 0 : 1;
+            this.cbxLogsFolders.SelectedIndex = Common.Config.LogsFolders.Count > 0 ? 0 : -1;
         }
         #endregion
 
