@@ -61,7 +61,7 @@ namespace Logger
         }
         #endregion
 
-        #region Structures
+        #region Constructors
         public Logs()
         {
             this.LogsFolder = Default.LogsFolder;
@@ -72,8 +72,7 @@ namespace Logger
             this.IsRemoveLineBreak = Default.IsRemoveLineBreak;
         }
 
-        /// <summary>
-        /// </summary>
+        /// <summary/>
         /// <param name="logFilePath">日志文件路径</param>
         /// <param name="size">日志文件大小(byte)，0为不限制大小</param>
         public Logs(string logFilePath, int size)
@@ -83,8 +82,7 @@ namespace Logger
             this.Size = size;
         }
 
-        /// <summary>
-        /// </summary>
+        /// <summary/>
         /// <param name="folder">日志文件保存路径</param>
         public Logs(string folder)
             : this()
@@ -93,8 +91,7 @@ namespace Logger
             this.TempFolder = Path.Combine(this.LogsFolder, "Temp");
         }
 
-        /// <summary>
-        /// </summary>
+        /// <summary/>
         /// <param name="folder">日志文件保存路径</param>
         /// <param name="sign">日志类型标记</param>
         public Logs(string folder, string sign)
