@@ -14,8 +14,6 @@ E:\PL\MyProjects\SVN\Logger\trunk\src\Logger\LogAnalyzer\obj\Debug\LogAnalyzer.p
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\LogAnalyzer.exe
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\LogAnalyzer.pdb
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\LogAnalyzer.csprojResolveAssemblyReference.cache
-E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\LogAnalyzer.FormMain.resources
-E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\LogAnalyzer.Properties.Resources.resources
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\LogAnalyzer.csproj.GenerateResource.Cache
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\bin\Debug\LogAnalyzer.exe
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\bin\Debug\LogAnalyzer.pdb
@@ -24,3 +22,5 @@ E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\bin\Debug\SharpSerializerLibrary.dll
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\bin\Debug\Logger.pdb
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\bin\Debug\SharpSerializerLibrary.pdb
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\bin\Debug\SharpSerializerLibrary.xml
+E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\Com.EnjoyCodes.LogAnalyzer.FormMain.resources
+E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\Com.EnjoyCodes.LogAnalyzer.Properties.Resources.resources

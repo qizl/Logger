@@ -6,7 +6,7 @@ using System.IO;
 
 using System.Security.Cryptography;
 
-namespace Logger
+namespace Com.EnjoyCodes.Logger
 {
     public class TripleDES
     {

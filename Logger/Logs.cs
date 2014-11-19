@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 
-namespace Logger
+namespace Com.EnjoyCodes.Logger
 {
     public class Logs
     {

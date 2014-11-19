@@ -1,5 +1,5 @@
-﻿using LogAnalyzer.Models;
-using Logger;
+﻿using Com.EnjoyCodes.Logger;
+using Com.EnjoyCodes.LogAnalyzer.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LogAnalyzer
+namespace Com.EnjoyCodes.LogAnalyzer
 {
     public partial class FormMain : Form
     {

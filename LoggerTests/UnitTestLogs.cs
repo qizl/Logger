@@ -1,11 +1,11 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Logger;
 using System.IO;
 using System.Collections.Generic;
 using System.Threading;
+using Com.EnjoyCodes.Logger;
 
-namespace LoggerTests
+namespace Com.EnjoyCodes.LoggerTests
 {
     [TestClass]
     public class UnitTestLogs
@@ -33,7 +33,7 @@ namespace LoggerTests
         /// </summary>
         [TestMethod]
         public void TestWriteLine()
-       { 
+        {
             Logs log = new Logs(Path.Combine(Environment.CurrentDirectory, "Logs"));
 
             int i = 10000;

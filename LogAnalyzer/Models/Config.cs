@@ -1,11 +1,11 @@
-﻿using Logger;
+﻿using Com.EnjoyCodes.Logger;
 using SharpSerializerLibrary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace LogAnalyzer.Models
+namespace Com.EnjoyCodes.LogAnalyzer.Models
 {
     public class Config
     {

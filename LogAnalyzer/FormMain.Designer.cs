@@ -1,4 +1,4 @@
-﻿namespace LogAnalyzer
+﻿namespace Com.EnjoyCodes.LogAnalyzer
 {
     partial class FormMain
     {

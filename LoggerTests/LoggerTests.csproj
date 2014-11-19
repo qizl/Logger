@@ -6,7 +6,7 @@
     <ProjectGuid>{D9BABD15-301D-4839-A68A-3580827BF757}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LoggerTests</RootNamespace>
+    <RootNamespace>Com.EnjoyCodes.LoggerTests</RootNamespace>
     <AssemblyName>LoggerTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

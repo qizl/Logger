@@ -7,7 +7,7 @@
     <ProjectGuid>{549EBB6D-7257-462B-A9B3-F3C038CA62A8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LogAnalyzer</RootNamespace>
+    <RootNamespace>Com.EnjoyCodes.LogAnalyzer</RootNamespace>
     <AssemblyName>LogAnalyzer</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -68,6 +68,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
