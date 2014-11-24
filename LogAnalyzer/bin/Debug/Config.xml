@@ -1,7 +1,7 @@
-﻿<Complex name="Root" type="LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+﻿<Complex name="Root" type="Com.EnjoyCodes.LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
   <Properties>
-    <Simple name="BeginTime" value="11/14/2014 09:06:32" />
-    <Simple name="EndTime" value="11/14/2014 09:06:32" />
+    <Simple name="BeginTime" value="11/21/2014 16:13:11" />
+    <Simple name="EndTime" value="11/21/2014 16:13:11" />
     <Simple name="Keywords" value="" />
     <Simple name="Type" value="Normal" />
     <Simple name="IgnoreCase" value="True" />
@@ -17,7 +17,7 @@
       <Items />
     </Collection>
     <Simple name="LogChangeUpdateInterval" value="500" />
-    <Simple name="CreateTime" value="11/14/2014 09:06:32" />
-    <Simple name="UpdateTime" value="11/14/2014 09:06:32" />
+    <Simple name="CreateTime" value="11/21/2014 16:13:11" />
+    <Simple name="UpdateTime" value="11/21/2014 16:13:11" />
   </Properties>
 </Complex>

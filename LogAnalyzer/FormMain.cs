@@ -270,7 +270,11 @@ namespace Com.EnjoyCodes.LogAnalyzer
             this._logsResult = this._logsResult.OrderByDescending(l => l.Time).ToList();
 
             foreach (var item in this._logsResult)
-                this.dgvResult.Rows.Add(string.Format("{0:D4}-{1:D2}-{2:D2} {3:D2}:{4:D2}:{5:D2} {6:D3}", new object[] { item.Time.Year, item.Time.Month, item.Time.Day, item.Time.Hour, item.Time.Minute, item.Time.Second, item.Time.Millisecond }), item.Type, item.Describe);
+                this.dgvResult.Rows.Add(
+                    string.Format("{0:D4}-{1:D2}-{2:D2} {3:D2}:{4:D2}:{5:D2} {6:D3}",
+                    new object[] { item.Time.Year, item.Time.Month, item.Time.Day, item.Time.Hour, item.Time.Minute, item.Time.Second, item.Time.Millisecond }),
+                    item.Type,
+                    item.Describe.Length > 5000 ? item.Describe.Substring(0, 5000) + "..." : item.Describe);
 
             Common.ClearMemory();
         }
