@@ -221,8 +221,8 @@ namespace Com.EnjoyCodes.Logger
         /// <returns></returns>
         public string WriteLine(Exception e, string remark)
         {
-            string status = e.InnerException == null ? e.Message : e.Message + ",InnerException:" + e.InnerException.Message;
-            status = LogTypes.Error.ToString() + ":" + remark + "," + status + (!string.IsNullOrEmpty(e.StackTrace) ? ",StackTrace:" + e.StackTrace : "");
+            string status = e != null ? (e.InnerException == null ? e.Message : e.Message + ",InnerException:" + e.InnerException.Message) : string.Empty;
+            status = LogTypes.Error.ToString() + ":" + remark + "," + status + ((e != null && !string.IsNullOrEmpty(e.StackTrace)) ? ",StackTrace:" + e.StackTrace : string.Empty);
             return this.WriteLine(status);
         }
 

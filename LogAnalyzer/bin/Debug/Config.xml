@@ -1,23 +1,25 @@
 ﻿<Complex name="Root" type="Com.EnjoyCodes.LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
   <Properties>
-    <Simple name="BeginTime" value="11/21/2014 16:13:11" />
-    <Simple name="EndTime" value="11/21/2014 16:13:11" />
+    <Simple name="BeginTime" value="12/12/2014 09:36:08" />
+    <Simple name="EndTime" value="12/12/2014 09:36:08" />
     <Simple name="Keywords" value="" />
-    <Simple name="Type" value="Normal" />
+    <Simple name="Type" value="All" />
     <Simple name="IgnoreCase" value="True" />
     <Simple name="EnabledNearFind" value="False" />
-    <Null name="NearFindKeywords" />
+    <Simple name="NearFindKeywords" value="" />
     <Simple name="NearFindRegion" value="5" />
     <Simple name="IncludeKeywords" value="True" />
     <Simple name="IncludeNearKeywords" value="True" />
     <Collection name="LogsFolders">
       <Properties>
-        <Simple name="Capacity" value="0" />
+        <Simple name="Capacity" value="4" />
       </Properties>
-      <Items />
+      <Items>
+        <Simple value="E:\PL\MyProjects\SVN\PersonalFileManagePlatform\trunk\src\FileDBManager\bin\Release\Logs" />
+      </Items>
     </Collection>
     <Simple name="LogChangeUpdateInterval" value="500" />
     <Simple name="CreateTime" value="11/21/2014 16:13:11" />
-    <Simple name="UpdateTime" value="11/21/2014 16:13:11" />
+    <Simple name="UpdateTime" value="12/12/2014 09:36:08" />
   </Properties>
 </Complex>
