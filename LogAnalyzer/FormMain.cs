@@ -309,7 +309,7 @@ namespace Com.EnjoyCodes.LogAnalyzer
                                 File.Delete(dialog.FileName);
                             Logs log = new Logs(dialog.FileName, 0);
                             foreach (var item in this._logsResult)
-                                log.WriteLine(item.Time, item.Type != LogTypes.All && item.Type != LogTypes.Normal ? item.Type.ToString() + ":" : "" + item.Describe);
+                                log.WriteLine(item.Time, item.Describe);
                         }
 
                         this.btnExport.Text = "完成";
