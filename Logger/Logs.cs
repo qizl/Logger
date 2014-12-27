@@ -378,6 +378,8 @@ namespace Com.EnjoyCodes.Logger
             bool b = Enum.TryParse<LogTypes>(typeStr, out type);
             if (!b)
                 type = LogTypes.Normal;
+            if (type != LogTypes.Error)
+                type = LogTypes.Normal;
 
             return type;
         }

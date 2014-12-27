@@ -1,9 +1,9 @@
 ﻿<Complex name="Root" type="Com.EnjoyCodes.LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
   <Properties>
-    <Simple name="BeginTime" value="12/25/2014 14:25:41" />
-    <Simple name="EndTime" value="12/25/2014 16:13:00" />
+    <Simple name="BeginTime" value="12/08/2014 12:07:20" />
+    <Simple name="EndTime" value="12/27/2014 14:57:16" />
     <Simple name="Keywords" value="" />
-    <Simple name="Type" value="All" />
+    <Simple name="Type" value="Error" />
     <Simple name="IgnoreCase" value="True" />
     <Simple name="EnabledNearFind" value="False" />
     <Simple name="NearFindKeywords" value="" />
@@ -15,11 +15,13 @@
         <Simple name="Capacity" value="4" />
       </Properties>
       <Items>
+        <Simple value="E:\ZyWorkroot\EasyBoxServer - ZY\trunk\src_Platform\EasyboxServer\Content\Logs" />
+        <Simple value="E:\ZyWorkroot\EasyBoxServer\trunk\src_Platform\EasyboxServer\Content\Logs" />
         <Simple value="E:\PL\MyProjects\SVN\PersonalFileManagePlatform\trunk\src\FileDBManager\bin\Release\Logs" />
       </Items>
     </Collection>
     <Simple name="LogChangeUpdateInterval" value="500" />
     <Simple name="CreateTime" value="11/21/2014 16:13:11" />
-    <Simple name="UpdateTime" value="12/26/2014 20:17:56" />
+    <Simple name="UpdateTime" value="12/27/2014 15:09:38" />
   </Properties>
 </Complex>
