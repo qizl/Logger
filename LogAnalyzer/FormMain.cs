@@ -29,6 +29,11 @@ namespace Com.EnjoyCodes.LogAnalyzer
         /// 日志监听 - 上次加载日志的时间
         /// </summary>
         private DateTime _lastUpdateTime = DateTime.Now;
+
+        /// <summary>
+        /// 导出文件路径
+        /// </summary>
+        private string _exportFilePath;
         #endregion
 
         #region Structures
@@ -296,17 +301,22 @@ namespace Com.EnjoyCodes.LogAnalyzer
         private void btnExport_Click(object sender, EventArgs e)
         {
             if (this._logdFilesPath != null && this._logdFilesPath.Length > 0)
+            {
                 if (this.btnExport.Text == "导出")
+                {
                     using (SaveFileDialog dialog = new SaveFileDialog())
                     {
                         dialog.Title = "请选择保存路径:";
                         dialog.Filter = "日志文件(*.log)|*.log|文本文件(*.txt)|*.txt";
                         dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-                        dialog.FileName = "检索数据";
+                        dialog.FileName = "检索数据 - " + DateTime.Now.ToString("yyyyMMddHHmm");
                         if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
                             if (File.Exists(dialog.FileName))
                                 File.Delete(dialog.FileName);
+
+                            this._exportFilePath = dialog.FileName;
+
                             Logs log = new Logs(dialog.FileName, 0);
                             foreach (var item in this._logsResult)
                                 log.WriteLine(item.Time, item.Describe);
@@ -314,6 +324,13 @@ namespace Com.EnjoyCodes.LogAnalyzer
 
                         this.btnExport.Text = "完成";
                     }
+                }
+                else if (this.btnExport.Text == "完成")
+                {
+                    if (!string.IsNullOrEmpty(this._exportFilePath) && File.Exists(this._exportFilePath))
+                        System.Diagnostics.Process.Start(this._exportFilePath);
+                }
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)
