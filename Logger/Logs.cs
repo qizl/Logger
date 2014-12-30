@@ -302,14 +302,11 @@ namespace Com.EnjoyCodes.Logger
 
             using (StreamReader stream = new StreamReader(newFilePath, true))
             {
-                string str = stream.ReadLine();
-                while (str != null)
+                while (stream.Peek() > 0)
                 {
-                    Log log = this.ReadLine(str);
+                    Log log = this.ReadLine(stream.ReadLine());
                     if (log != null)
                         logs.Add(log);
-
-                    str = stream.ReadLine();
                 }
             }
 

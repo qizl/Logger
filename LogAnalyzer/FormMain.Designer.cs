@@ -64,6 +64,7 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.cbxLogsFolders = new System.Windows.Forms.ComboBox();
             this.btnRefreshListen = new System.Windows.Forms.Button();
             this.btnStopListen = new System.Windows.Forms.Button();
             this.btnStartListen = new System.Windows.Forms.Button();
@@ -81,7 +82,6 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.cbxLogsFolders = new System.Windows.Forms.ComboBox();
             this.plHead.SuspendLayout();
             this.plBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -484,12 +484,20 @@
             this.tabPage9.Controls.Add(this.btnStartListen);
             this.tabPage9.Controls.Add(this.btnChooseLogsFolder);
             this.tabPage9.Controls.Add(this.label10);
-            this.tabPage9.Location = new System.Drawing.Point(4, 30);
+            this.tabPage9.Location = new System.Drawing.Point(4, 25);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1076, 216);
+            this.tabPage9.Size = new System.Drawing.Size(1076, 221);
             this.tabPage9.TabIndex = 3;
             this.tabPage9.Text = "日志监听";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // cbxLogsFolders
+            // 
+            this.cbxLogsFolders.FormattingEnabled = true;
+            this.cbxLogsFolders.Location = new System.Drawing.Point(139, 18);
+            this.cbxLogsFolders.Name = "cbxLogsFolders";
+            this.cbxLogsFolders.Size = new System.Drawing.Size(640, 26);
+            this.cbxLogsFolders.TabIndex = 3;
             // 
             // btnRefreshListen
             // 
@@ -580,7 +588,7 @@
             this.dgvResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvResult.Location = new System.Drawing.Point(3, 3);
             this.dgvResult.Name = "dgvResult";
-            this.dgvResult.RowHeadersWidth = 50;
+            this.dgvResult.RowHeadersWidth = 80;
             this.dgvResult.RowTemplate.Height = 23;
             this.dgvResult.Size = new System.Drawing.Size(1070, 214);
             this.dgvResult.TabIndex = 7;
@@ -663,14 +671,6 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "数据分析";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // cbxLogsFolders
-            // 
-            this.cbxLogsFolders.FormattingEnabled = true;
-            this.cbxLogsFolders.Location = new System.Drawing.Point(139, 18);
-            this.cbxLogsFolders.Name = "cbxLogsFolders";
-            this.cbxLogsFolders.Size = new System.Drawing.Size(640, 26);
-            this.cbxLogsFolders.TabIndex = 3;
             // 
             // FormMain
             // 

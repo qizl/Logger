@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Com.EnjoyCodes.LogAnalyzer
 {
@@ -34,6 +35,20 @@ namespace Com.EnjoyCodes.LogAnalyzer
         /// 导出文件路径
         /// </summary>
         private string _exportFilePath;
+
+        /// <summary>
+        /// 日志读取线程
+        /// </summary>
+        private Thread _tdReadLogs;
+        /// <summary>
+        /// 日志显示代理
+        /// </summary>
+        private delegate void DisplayLogsDelegate();
+
+        /// <summary>
+        /// 是否按照配置文件的日志显示数量显示日志
+        /// </summary>
+        private bool _isDisplayLogsByConfigAmounts = false;
         #endregion
 
         #region Structures
@@ -89,11 +104,18 @@ namespace Com.EnjoyCodes.LogAnalyzer
                     this._logdFilesPath = dialog.FileNames;
 
                     this.readLogs();
-                    this.bindingDatas();
                 }
             }
         }
         void readLogs()
+        {
+            if (this._tdReadLogs == null)
+            {
+                this._tdReadLogs = new Thread(this.readLogsTd);
+                this._tdReadLogs.Start();
+            }
+        }
+        void readLogsTd()
         {
             this._logs.Clear();
             Logs logDal = new Logs();
@@ -108,7 +130,12 @@ namespace Com.EnjoyCodes.LogAnalyzer
 
             this._logsResult.Clear();
             this._logsResult.AddRange(this._logs);
+
+            this.Invoke(new DisplayLogsDelegate(this.bindingDatas));
+
+            this._tdReadLogs = null;
         }
+
         void bindingDatas()
         {
             int amounts = this._logdFilesPath == null ? 0 : this._logdFilesPath.Length;
@@ -274,7 +301,9 @@ namespace Com.EnjoyCodes.LogAnalyzer
 
             this._logsResult = this._logsResult.OrderByDescending(l => l.Time).ToList();
 
-            foreach (var item in this._logsResult)
+            List<Log> logs = !this._isDisplayLogsByConfigAmounts ? this._logsResult : this._logsResult.Take(Common.Config.DisplayAmounts).ToList();
+            this._isDisplayLogsByConfigAmounts = false;
+            foreach (var item in logs)
                 this.dgvResult.Rows.Add(
                     string.Format("{0:D4}-{1:D2}-{2:D2} {3:D2}:{4:D2}:{5:D2} {6:D3}",
                     new object[] { item.Time.Year, item.Time.Month, item.Time.Day, item.Time.Hour, item.Time.Minute, item.Time.Second, item.Time.Millisecond }),
@@ -390,8 +419,8 @@ namespace Com.EnjoyCodes.LogAnalyzer
 
                 this._logdFilesPath = new string[] { fileName };
 
+                this._isDisplayLogsByConfigAmounts = true;
                 this.readLogs();
-                this.bindingDatas();
             }
         }
 
@@ -461,6 +490,9 @@ namespace Com.EnjoyCodes.LogAnalyzer
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.stopListen();
+
+            if (this._tdReadLogs != null)
+                this._tdReadLogs.Abort();
         }
         #endregion
     }

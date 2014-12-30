@@ -53,6 +53,14 @@ namespace Com.EnjoyCodes.LogAnalyzer.Models
         public int LogChangeUpdateInterval { get; set; }
         #endregion
 
+        #region 日志显示设置
+        /// <summary>
+        /// 日志列表每次显示数量
+        /// -1，显示所有
+        /// </summary>
+        public int DisplayAmounts { get; set; }
+        #endregion
+
         public DateTime CreateTime { get; set; }
         public DateTime UpdateTime { get; set; }
 

@@ -22,6 +22,7 @@ namespace Com.EnjoyCodes.LogAnalyzer.Models
             IncludeKeywords = true,
             IncludeNearKeywords = true,
             LogChangeUpdateInterval = 500,
+            DisplayAmounts = 700,
             LogsFolders = new List<string>(),
             CreateTime = DateTime.Now,
             UpdateTime = DateTime.Now
