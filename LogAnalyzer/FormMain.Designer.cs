@@ -588,7 +588,7 @@
             this.dgvResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvResult.Location = new System.Drawing.Point(3, 3);
             this.dgvResult.Name = "dgvResult";
-            this.dgvResult.RowHeadersWidth = 80;
+            this.dgvResult.RowHeadersWidth = 50;
             this.dgvResult.RowTemplate.Height = 23;
             this.dgvResult.Size = new System.Drawing.Size(1070, 214);
             this.dgvResult.TabIndex = 7;

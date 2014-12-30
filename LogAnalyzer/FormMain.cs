@@ -207,6 +207,12 @@ namespace Com.EnjoyCodes.LogAnalyzer
 
         private void dgvResult_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
+            // 设置表头宽度
+            SizeF strSizeF = e.Graphics.MeasureString((e.RowIndex + 1).ToString(), this.dgvResult.RowHeadersDefaultCellStyle.Font);
+            if (strSizeF.Width + 20 > this.dgvResult.RowHeadersWidth)
+                this.dgvResult.RowHeadersWidth = 20 + (int)strSizeF.Width;
+
+            // 表头显示序号
             SolidBrush b = new SolidBrush(this.dgvResult.RowHeadersDefaultCellStyle.ForeColor);
             e.Graphics.DrawString(
                 (e.RowIndex + 1).ToString(System.Globalization.CultureInfo.CurrentUICulture),
