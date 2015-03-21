@@ -1,12 +1,12 @@
 ﻿<Complex name="Root" type="Com.EnjoyCodes.LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
   <Properties>
-    <Simple name="BeginTime" value="12/30/2014 11:30:20" />
-    <Simple name="EndTime" value="12/30/2014 11:30:20" />
+    <Simple name="BeginTime" value="03/20/2015 08:21:08" />
+    <Simple name="EndTime" value="03/20/2015 13:43:00" />
     <Simple name="Keywords" value="" />
     <Simple name="Type" value="All" />
     <Simple name="IgnoreCase" value="True" />
-    <Simple name="EnabledNearFind" value="False" />
-    <Simple name="NearFindKeywords" value="" />
+    <Simple name="EnabledNearFind" value="True" />
+    <Simple name="NearFindKeywords" value="32323ceshi" />
     <Simple name="NearFindRegion" value="5" />
     <Simple name="IncludeKeywords" value="True" />
     <Simple name="IncludeNearKeywords" value="True" />
@@ -15,16 +15,18 @@
         <Simple name="Capacity" value="8" />
       </Properties>
       <Items>
+        <Simple value="E:\ZyWorkroot\EasyBoxIntegratedManagementPlatform\doc\4 海尔版\Logs" />
+        <Simple value="E:\ZyWorkroot\EasyBoxIntegratedManagementPlatform\trunk\src_Platform\EasyboxServer\Content\Logs" />
+        <Simple value="E:\ZyWorkroot\EasyBoxIntegratedManagementPlatform\trunk\src_Haier\EasyboxServerWebAPI\Content\Logs" />
+        <Simple value="E:\ZyWorkroot\KXProductionManagementSystem\trunk\src\KXProductionManagementSystem.Server\Content\Logs" />
+        <Simple value="E:\ZyWorkroot\KXProductionManagementSystem\trunk\src\KXProductionManagementSystem.Server.Tests\bin\Debug\Logs" />
         <Simple value="E:\桌面" />
         <Simple value="E:\ZyWorkroot\MulParaDataCollectSystem - ZY\trunk\src\MulParaDataCollectSystem\MulParaDataCollectSystem\bin\Debug\Logs" />
-        <Simple value="E:\ZyWorkroot\EasyBoxServer - ZY\trunk\src_Platform\EasyboxServer\Content\Logs" />
-        <Simple value="E:\ZyWorkroot\EasyBoxServer\trunk\src_Platform\EasyboxServer\Content\Logs" />
-        <Simple value="E:\PL\MyProjects\SVN\PersonalFileManagePlatform\trunk\src\FileDBManager\bin\Release\Logs" />
       </Items>
     </Collection>
     <Simple name="LogChangeUpdateInterval" value="500" />
     <Simple name="DisplayAmounts" value="700" />
     <Simple name="CreateTime" value="11/21/2014 16:13:11" />
-    <Simple name="UpdateTime" value="01/05/2015 17:16:37" />
+    <Simple name="UpdateTime" value="03/21/2015 09:08:48" />
   </Properties>
 </Complex>

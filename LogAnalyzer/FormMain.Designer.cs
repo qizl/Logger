@@ -82,6 +82,7 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.plHead.SuspendLayout();
             this.plBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -124,7 +125,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(231, 22);
+            this.btnClose.Location = new System.Drawing.Point(227, 22);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(119, 43);
             this.btnClose.TabIndex = 1;
@@ -613,6 +614,7 @@
             // 
             // plFoot
             // 
+            this.plFoot.Controls.Add(this.btnHelp);
             this.plFoot.Controls.Add(this.lblFindDescribe);
             this.plFoot.Controls.Add(this.btnReset);
             this.plFoot.Controls.Add(this.btnExport);
@@ -634,7 +636,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(403, 22);
+            this.btnReset.Location = new System.Drawing.Point(409, 22);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(119, 43);
             this.btnReset.TabIndex = 9;
@@ -644,7 +646,7 @@
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(224, 22);
+            this.btnExport.Location = new System.Drawing.Point(227, 22);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(119, 43);
             this.btnExport.TabIndex = 9;
@@ -671,6 +673,16 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "数据分析";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Location = new System.Drawing.Point(591, 22);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(119, 43);
+            this.btnHelp.TabIndex = 11;
+            this.btnHelp.Text = "帮助";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // FormMain
             // 
@@ -770,6 +782,7 @@
         private System.Windows.Forms.Button btnStartListen;
         private System.Windows.Forms.Button btnRefreshListen;
         private System.Windows.Forms.ComboBox cbxLogsFolders;
+        private System.Windows.Forms.Button btnHelp;
     }
 }
 

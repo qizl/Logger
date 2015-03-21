@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading;
+using System.Diagnostics;
 
 namespace Com.EnjoyCodes.LogAnalyzer
 {
@@ -374,6 +375,11 @@ namespace Com.EnjoyCodes.LogAnalyzer
             this._logsResult.AddRange(this._logs);
 
             this.bindingDatas();
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://enjoycodes.com/Home/ViewNote/6e8385bb-5ae3-4f3e-bfc1-a66b8d681e29");
         }
         #endregion
 
