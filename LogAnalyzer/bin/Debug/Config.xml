@@ -1,11 +1,11 @@
 ﻿<Complex name="Root" type="Com.EnjoyCodes.LogAnalyzer.Models.Config, LogAnalyzer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
   <Properties>
-    <Simple name="BeginTime" value="03/20/2015 08:21:08" />
-    <Simple name="EndTime" value="03/20/2015 13:43:00" />
-    <Simple name="Keywords" value="" />
+    <Simple name="BeginTime" value="04/10/2015 23:54:36" />
+    <Simple name="EndTime" value="04/11/2015 13:54:32" />
+    <Simple name="Keywords" value="15253282923" />
     <Simple name="Type" value="All" />
     <Simple name="IgnoreCase" value="True" />
-    <Simple name="EnabledNearFind" value="True" />
+    <Simple name="EnabledNearFind" value="False" />
     <Simple name="NearFindKeywords" value="32323ceshi" />
     <Simple name="NearFindRegion" value="5" />
     <Simple name="IncludeKeywords" value="True" />
@@ -27,6 +27,6 @@
     <Simple name="LogChangeUpdateInterval" value="500" />
     <Simple name="DisplayAmounts" value="700" />
     <Simple name="CreateTime" value="11/21/2014 16:13:11" />
-    <Simple name="UpdateTime" value="03/23/2015 14:59:59" />
+    <Simple name="UpdateTime" value="04/11/2015 14:19:36" />
   </Properties>
 </Complex>
