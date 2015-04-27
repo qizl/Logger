@@ -24,3 +24,5 @@ E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\bin\Debug\SharpSerializerLibrary.pdb
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\bin\Debug\SharpSerializerLibrary.xml
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\Com.EnjoyCodes.LogAnalyzer.FormMain.resources
 E:\PL\MyProjects\GitHub\Logger\LogAnalyzer\obj\Debug\Com.EnjoyCodes.LogAnalyzer.Properties.Resources.resources
+E:\OpenSources\Logger\LogAnalyzer\obj\Debug\LogAnalyzer.exe
+E:\OpenSources\Logger\LogAnalyzer\obj\Debug\LogAnalyzer.pdb
