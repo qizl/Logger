@@ -19,3 +19,7 @@ e.根据关键字及属性值绘制统计图（曲线图等）
 	i.检索数据占总数据的比例
 f.√ 文件监听
 
+调用示例：
+Logs log = new Logs(@"D:/");
+log.WriteLine("test");
+演示：http://enjoycodes.com/Home/ViewNote/dd649545-875c-4314-a32c-4a1c3329c304
