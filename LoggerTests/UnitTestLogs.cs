@@ -36,13 +36,14 @@ namespace Com.EnjoyCodes.LoggerTests
         {
             Logs log = new Logs(Path.Combine(Environment.CurrentDirectory, "Logs"));
 
-            int i = 10000;
+            int i = 1000000;
             byte[] bs = new byte[] { 1, 2, 3, 4, 5, 6 };
+            Random rad = new Random();
             while (i-- > 0)
             {
                 log.WriteLine(bs, "字节数组测试");
             }
-            Thread.Sleep(1000000);
+            Assert.IsTrue(true);
         }
 
         [TestMethod]

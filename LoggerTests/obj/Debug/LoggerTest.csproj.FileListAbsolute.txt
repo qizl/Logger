@@ -1,7 +1,0 @@
-E:\PL\MyProjects\GitHub\Logger\LoggerTest\bin\Debug\LoggerTest.dll
-E:\PL\MyProjects\GitHub\Logger\LoggerTest\bin\Debug\LoggerTest.pdb
-E:\PL\MyProjects\GitHub\Logger\LoggerTest\bin\Debug\Logger.dll
-E:\PL\MyProjects\GitHub\Logger\LoggerTest\bin\Debug\Logger.pdb
-E:\PL\MyProjects\GitHub\Logger\LoggerTest\obj\Debug\LoggerTest.csprojResolveAssemblyReference.cache
-E:\PL\MyProjects\GitHub\Logger\LoggerTest\obj\Debug\LoggerTest.dll
-E:\PL\MyProjects\GitHub\Logger\LoggerTest\obj\Debug\LoggerTest.pdb
