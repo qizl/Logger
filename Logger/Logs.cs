@@ -113,7 +113,7 @@ namespace Com.EnjoyCodes.Logger
                     this._logs.Remove(log);
                 }
                 this.writeLine(log.Describe);
-                Thread.Sleep(10);
+                Thread.Sleep(2);
             }
             this._tdMain = null;
         }

@@ -1,6 +1,0 @@
-E:\PL\MyProjects\SVN\XmlSerializer\trunk\sharpSerializer\SharpSerializer.Library\bin\Debug\Polenter.SharpSerializer.XML
-E:\PL\MyProjects\SVN\XmlSerializer\trunk\sharpSerializer\SharpSerializer.Library\bin\Debug\Polenter.SharpSerializer.dll
-E:\PL\MyProjects\SVN\XmlSerializer\trunk\sharpSerializer\SharpSerializer.Library\bin\Debug\Polenter.SharpSerializer.pdb
-E:\PL\MyProjects\SVN\XmlSerializer\trunk\sharpSerializer\SharpSerializer.Library\obj\Debug\SharpSerializer.Library.csprojResolveAssemblyReference.cache
-E:\PL\MyProjects\SVN\XmlSerializer\trunk\sharpSerializer\SharpSerializer.Library\obj\Debug\Polenter.SharpSerializer.dll
-E:\PL\MyProjects\SVN\XmlSerializer\trunk\sharpSerializer\SharpSerializer.Library\obj\Debug\Polenter.SharpSerializer.pdb
