@@ -97,7 +97,7 @@ namespace Com.EnjoyCodes.LogAnalyzer
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Multiselect = true;
-                dialog.InitialDirectory = Common.Config.LogsFolders[0];
+                dialog.InitialDirectory = Common.Config.LogsFolders.Count > 0 ? Common.Config.LogsFolders[0] : Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
                 dialog.Title = "请选择日志文件：";
                 dialog.Filter = "日志文件(*.log)|*.log|文本文件(*.txt)|*.txt";
                 if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
