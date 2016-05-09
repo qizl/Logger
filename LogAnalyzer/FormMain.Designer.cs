@@ -77,12 +77,12 @@
             this.dgvResultclmType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvResultclmDescribe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.plFoot = new System.Windows.Forms.Panel();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.lblFindDescribe = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.btnHelp = new System.Windows.Forms.Button();
             this.plHead.SuspendLayout();
             this.plBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -168,7 +168,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabResultAnaylze);
             this.splitContainer1.Size = new System.Drawing.Size(1084, 629);
-            this.splitContainer1.SplitterDistance = 250;
+            this.splitContainer1.SplitterDistance = 155;
             this.splitContainer1.TabIndex = 2;
             // 
             // tabFinds
@@ -182,7 +182,7 @@
             this.tabFinds.Location = new System.Drawing.Point(0, 0);
             this.tabFinds.Name = "tabFinds";
             this.tabFinds.SelectedIndex = 0;
-            this.tabFinds.Size = new System.Drawing.Size(1084, 250);
+            this.tabFinds.Size = new System.Drawing.Size(1084, 155);
             this.tabFinds.TabIndex = 2;
             // 
             // tabPage1
@@ -195,7 +195,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1076, 216);
+            this.tabPage1.Size = new System.Drawing.Size(1076, 121);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "时间段检索";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -203,7 +203,7 @@
             // btnResetFindTime
             // 
             this.btnResetFindTime.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnResetFindTime.Location = new System.Drawing.Point(139, 92);
+            this.btnResetFindTime.Location = new System.Drawing.Point(139, 90);
             this.btnResetFindTime.Name = "btnResetFindTime";
             this.btnResetFindTime.Size = new System.Drawing.Size(75, 26);
             this.btnResetFindTime.TabIndex = 5;
@@ -255,10 +255,10 @@
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label3);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1076, 221);
+            this.tabPage2.Size = new System.Drawing.Size(1076, 216);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "关键字检索";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -327,9 +327,9 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.tabFindsAdvanced);
-            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Location = new System.Drawing.Point(4, 30);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1076, 221);
+            this.tabPage3.Size = new System.Drawing.Size(1076, 216);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "高级检索";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -344,7 +344,7 @@
             this.tabFindsAdvanced.Location = new System.Drawing.Point(0, 0);
             this.tabFindsAdvanced.Name = "tabFindsAdvanced";
             this.tabFindsAdvanced.SelectedIndex = 0;
-            this.tabFindsAdvanced.Size = new System.Drawing.Size(1076, 221);
+            this.tabFindsAdvanced.Size = new System.Drawing.Size(1076, 216);
             this.tabFindsAdvanced.TabIndex = 0;
             // 
             // tabPage6
@@ -361,7 +361,7 @@
             this.tabPage6.Location = new System.Drawing.Point(4, 30);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1068, 187);
+            this.tabPage6.Size = new System.Drawing.Size(1068, 182);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "临近检索";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -485,9 +485,9 @@
             this.tabPage9.Controls.Add(this.btnStartListen);
             this.tabPage9.Controls.Add(this.btnChooseLogsFolder);
             this.tabPage9.Controls.Add(this.label10);
-            this.tabPage9.Location = new System.Drawing.Point(4, 25);
+            this.tabPage9.Location = new System.Drawing.Point(4, 30);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1076, 221);
+            this.tabPage9.Size = new System.Drawing.Size(1076, 121);
             this.tabPage9.TabIndex = 3;
             this.tabPage9.Text = "日志监听";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -503,7 +503,7 @@
             // btnRefreshListen
             // 
             this.btnRefreshListen.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnRefreshListen.Location = new System.Drawing.Point(213, 112);
+            this.btnRefreshListen.Location = new System.Drawing.Point(213, 90);
             this.btnRefreshListen.Name = "btnRefreshListen";
             this.btnRefreshListen.Size = new System.Drawing.Size(75, 26);
             this.btnRefreshListen.TabIndex = 7;
@@ -514,7 +514,7 @@
             // btnStopListen
             // 
             this.btnStopListen.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnStopListen.Location = new System.Drawing.Point(132, 112);
+            this.btnStopListen.Location = new System.Drawing.Point(132, 90);
             this.btnStopListen.Name = "btnStopListen";
             this.btnStopListen.Size = new System.Drawing.Size(75, 26);
             this.btnStopListen.TabIndex = 7;
@@ -525,7 +525,7 @@
             // btnStartListen
             // 
             this.btnStartListen.Font = new System.Drawing.Font("Arial", 10F);
-            this.btnStartListen.Location = new System.Drawing.Point(51, 112);
+            this.btnStartListen.Location = new System.Drawing.Point(51, 90);
             this.btnStartListen.Name = "btnStartListen";
             this.btnStartListen.Size = new System.Drawing.Size(75, 26);
             this.btnStartListen.TabIndex = 7;
@@ -562,7 +562,7 @@
             this.tabResultAnaylze.Location = new System.Drawing.Point(0, 0);
             this.tabResultAnaylze.Name = "tabResultAnaylze";
             this.tabResultAnaylze.SelectedIndex = 0;
-            this.tabResultAnaylze.Size = new System.Drawing.Size(1084, 375);
+            this.tabResultAnaylze.Size = new System.Drawing.Size(1084, 470);
             this.tabResultAnaylze.TabIndex = 6;
             // 
             // tabPage4
@@ -572,7 +572,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 30);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1076, 341);
+            this.tabPage4.Size = new System.Drawing.Size(1076, 436);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "检索结果";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -591,7 +591,7 @@
             this.dgvResult.Name = "dgvResult";
             this.dgvResult.RowHeadersWidth = 50;
             this.dgvResult.RowTemplate.Height = 23;
-            this.dgvResult.Size = new System.Drawing.Size(1070, 214);
+            this.dgvResult.Size = new System.Drawing.Size(1070, 309);
             this.dgvResult.TabIndex = 7;
             this.dgvResult.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvResult_RowPostPaint);
             // 
@@ -620,10 +620,20 @@
             this.plFoot.Controls.Add(this.btnExport);
             this.plFoot.Controls.Add(this.btnFind);
             this.plFoot.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.plFoot.Location = new System.Drawing.Point(3, 217);
+            this.plFoot.Location = new System.Drawing.Point(3, 312);
             this.plFoot.Name = "plFoot";
             this.plFoot.Size = new System.Drawing.Size(1070, 121);
             this.plFoot.TabIndex = 0;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Location = new System.Drawing.Point(591, 22);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(119, 43);
+            this.btnHelp.TabIndex = 11;
+            this.btnHelp.Text = "帮助";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // lblFindDescribe
             // 
@@ -673,16 +683,6 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "数据分析";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Location = new System.Drawing.Point(591, 22);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(119, 43);
-            this.btnHelp.TabIndex = 11;
-            this.btnHelp.Text = "帮助";
-            this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // FormMain
             // 
