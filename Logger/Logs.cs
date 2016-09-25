@@ -356,7 +356,7 @@ namespace Com.EnjoyCodes.Logger
                     {
                         StringBuilder d = new StringBuilder();
                         for (int i = 1; i < strs.Length; i++)
-                            d.Append(strs[i]);
+                            d.Append((i > 1 ? ":" : string.Empty) + strs[i]);
                         describeString = d.ToString();
                     }
                 }
