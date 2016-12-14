@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 
@@ -42,6 +46,18 @@ namespace Com.EnjoyCodes.Logger
         /// 是否替移除换行符
         /// </summary>
         public bool IsRemoveLineBreak { get; set; }
+
+        /// <summary>
+        /// 日志文件保存位置
+        /// </summary>
+        public DbTypes DbTypes { get; set; }
+        public string ServerUrl { get; set; }
+        public int ServerSendInterval { get; set; }
+        public int SinglePackageCount { get; set; }
+        /// <summary>
+        /// 日志调用者（App）名称
+        /// </summary>
+        public string AppName { get; set; }
         #endregion
 
         #region Members
@@ -58,6 +74,17 @@ namespace Com.EnjoyCodes.Logger
             public static int Size = 1024 * 1024;
             public static bool IsEncrypt = false;
             public static bool IsRemoveLineBreak = true;
+            public static DbTypes DbTypes = DbTypes.LocalTxt;
+            public static string ServerUrl = "http://localhost:63203/api/logs";
+            /// <summary>
+            /// 服务端日志发送间隔
+            /// </summary>
+            public static int ServerSendInterval = 1000;
+            /// <summary>
+            /// 服务端日志每包发送数量
+            /// </summary>
+            public static int SinglePackageCount = 100;
+            public static string AppName = "API";
         }
         #endregion
 
@@ -70,6 +97,12 @@ namespace Com.EnjoyCodes.Logger
             this.Size = Default.Size;
             this.IsEncrypt = Default.IsEncrypt;
             this.IsRemoveLineBreak = Default.IsRemoveLineBreak;
+
+            this.DbTypes = Default.DbTypes;
+            this.ServerUrl = Default.ServerUrl;
+            this.ServerSendInterval = Default.ServerSendInterval;
+            this.SinglePackageCount = Default.SinglePackageCount;
+            this.AppName = Default.AppName;
         }
 
         /// <summary/>
@@ -106,14 +139,28 @@ namespace Com.EnjoyCodes.Logger
         {
             while (this._logs.Count > 0)
             {
-                LogCommand log = null;
-                lock (Logs.logLocker)
+                if (this.DbTypes == DbTypes.LocalTxt)
                 {
-                    log = this._logs.OrderBy(l => l.Time).First();
-                    this._logs.Remove(log);
+                    LogCommand log = null;
+                    lock (Logs.logLocker)
+                    {
+                        log = this._logs.OrderBy(l => l.Time).First();
+                        this._logs.Remove(log);
+                    }
+                    this.writeLine(log.Time, log.Logs);
+                    Thread.Sleep(2);
                 }
-                this.writeLine(log.Describe);
-                Thread.Sleep(2);
+                else if (this.DbTypes == DbTypes.Server)
+                {
+                    var logs = new List<LogSvr>();
+                    lock (Logs.logLocker)
+                    {
+                        logs.AddRange(this._logs.Select(m => (LogSvr)m.Logs).Take(this.SinglePackageCount));
+                        this._logs.RemoveRange(0, this._logs.Count > this.SinglePackageCount ? this.SinglePackageCount : this._logs.Count);
+                    }
+                    this.writeLine(logs[0].CreateTime,logs);
+                    Thread.Sleep(this.ServerSendInterval);
+                }
             }
             this._tdMain = null;
         }
@@ -134,11 +181,11 @@ namespace Com.EnjoyCodes.Logger
             return time;
         }
 
-        private void addLogs(DateTime time, string str)
+        private void addLogs(DateTime time, object log)
         {
             lock (Logs.logLocker)
             {
-                this._logs.Add(new LogCommand() { Time = time, Describe = str });
+                this._logs.Add(new LogCommand() { Time = time, Logs = log });
             }
 
             if (this._tdMain == null)
@@ -148,27 +195,16 @@ namespace Com.EnjoyCodes.Logger
             }
         }
 
-        private void writeLine(string str)
+        private void writeLine(DateTime time, object log)
         {
-            try
+            switch (this.DbTypes)
             {
-                using (StreamWriter stream = new StreamWriter(this.LogFilePath, true))
-                {
-                    stream.WriteLine(str);
-                    stream.Flush();
-                    stream.Close();
-                }
+            case DbTypes.Server: this.writeToServer(log); break;
+            case DbTypes.LocalTxt:
+            default: this.writeToLocalTxt(time, log is LogSvr ? JsonConvert.SerializeObject(log) : log.ToString()); break;
             }
-            catch { str = "写日志失败！"; }
         }
-
-        /// <summary>
-        /// 写日志
-        /// </summary>
-        /// <param name="time"></param>
-        /// <param name="str"></param>
-        /// <returns></returns>
-        public string WriteLine(DateTime time, string str)
+        private void writeToLocalTxt(DateTime time, string str)
         {
             if (!Directory.Exists(this.LogsFolder))
                 Directory.CreateDirectory(this.LogsFolder);
@@ -193,10 +229,44 @@ namespace Com.EnjoyCodes.Logger
 
             // 判断是否需要移除换行符
             if (this.IsRemoveLineBreak)
-            {
                 str = str.Replace(Environment.NewLine, "");
-            }
 
+            try
+            {
+                using (StreamWriter stream = new StreamWriter(this.LogFilePath, true))
+                {
+                    stream.WriteLine(str);
+                    stream.Flush();
+                    stream.Close();
+                }
+            }
+            catch { str = "写日志失败！"; }
+        }
+        private void writeToServer(object logs)
+        {
+            try
+            {
+                var c = new Dictionary<string, string>();
+                c.Add("Logs", JsonConvert.SerializeObject(logs));
+
+                var handler = new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip };
+                using (var http = new HttpClient(handler))
+                {
+                    var content = new FormUrlEncodedContent(c);
+                    var response = http.PostAsync(this.ServerUrl, content).Result;
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        /// <summary>
+        /// 写日志
+        /// </summary>
+        /// <param name="time"></param>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public string WriteLine(DateTime time, string str)
+        {
             this.addLogs(time, str);
 
             return str;
@@ -258,6 +328,12 @@ namespace Com.EnjoyCodes.Logger
             foreach (var b in strs)
                 s.Append(b + ",");
             return this.WriteLine(remark + ", " + s.ToString());
+        }
+
+        public void WriteLine(LogSvr log)
+        {
+            if (string.IsNullOrEmpty(log.AppName)) log.AppName = this.AppName;
+            this.addLogs(DateTime.Now, log);
         }
         #endregion
 
@@ -406,5 +482,17 @@ namespace Com.EnjoyCodes.Logger
             return b;
         }
         #endregion
+    }
+
+    public enum DbTypes
+    {
+        /// <summary>
+        /// 本地txt文件
+        /// </summary>
+        LocalTxt,
+        /// <summary>
+        /// 服务端存储
+        /// </summary>
+        Server
     }
 }

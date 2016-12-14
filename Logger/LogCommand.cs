@@ -8,6 +8,6 @@ namespace Com.EnjoyCodes.Logger
     public class LogCommand
     {
         public DateTime Time { get; set; }
-        public string Describe { get; set; }
+        public object Logs { get; set; }
     }
 }

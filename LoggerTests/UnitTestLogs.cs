@@ -4,6 +4,10 @@ using System.IO;
 using System.Collections.Generic;
 using System.Threading;
 using Com.EnjoyCodes.Logger;
+using Newtonsoft.Json;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace Com.EnjoyCodes.LoggerTests
 {
@@ -95,6 +99,60 @@ namespace Com.EnjoyCodes.LoggerTests
             catch (Exception ex)
             {
                 log.WriteLine(ex, "Test");
+            }
+        }
+
+        [TestMethod]
+        public void TestSendtoServer()
+        {
+            //var log = new Logs();
+            //log.DbTypes = DbTypes.Server;
+            //log.WriteLine(new LogSvr() { });
+
+            var src = new List<LogSvr>() {
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",AppName="LogMonitor.Tests",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",AppName="LogMonitor.Tests",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",AppName="LogMonitor.Tests",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",AppName="LogMonitor.Tests",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",AppName="LogMonitor.Tests",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",AppName="LogMonitor.Tests",CreateTime=DateTime.Now}
+            };
+            var c = new Dictionary<string, string>();
+            c.Add("Logs", JsonConvert.SerializeObject(src));
+
+            var handler = new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip };
+            using (var http = new HttpClient(handler))
+            {
+                var content = new FormUrlEncodedContent(c);
+                //content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+                var response = http.PostAsync("http://localhost:63203/api/logs", content).Result;
+                response.EnsureSuccessStatusCode();
+                var resultValue = response.Content.ReadAsStringAsync();
+            }
+        }
+
+        [TestMethod]
+        public void TestWriteLinetoServer()
+        {
+            var log = new Logs();
+            log.DbTypes = DbTypes.Server;
+            log.ServerUrl = "http://localhost:7000/api/logs";
+            log.AppName = "Logger.Tests";
+
+            while (true)
+            {
+                var src = new List<LogSvr>() {
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",CreateTime=DateTime.Now},
+                new LogSvr() {Content="typeof(LogsController).GetMethod(handlePost, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);typeof(LogsController).GetMethod(, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);",Type="normal",CreateTime=DateTime.Now}
+                };
+                foreach (var item in src)
+                    log.WriteLine(item);
+
+                Thread.Sleep(1000);
             }
         }
     }
