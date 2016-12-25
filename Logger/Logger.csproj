@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compression.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="LogCommand.cs" />
     <Compile Include="Logs.cs" />

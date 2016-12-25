@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 
@@ -75,7 +74,7 @@ namespace Com.EnjoyCodes.Logger
             public static bool IsEncrypt = false;
             public static bool IsRemoveLineBreak = true;
             public static DbTypes DbTypes = DbTypes.LocalTxt;
-            public static string ServerUrl = "http://localhost:63203/api/logs";
+            public static string ServerUrl = "http://192.168.6.99:8083/api/logs";
             /// <summary>
             /// 服务端日志发送间隔
             /// </summary>
@@ -155,10 +154,16 @@ namespace Com.EnjoyCodes.Logger
                     var logs = new List<LogSvr>();
                     lock (Logs.logLocker)
                     {
-                        logs.AddRange(this._logs.Select(m => (LogSvr)m.Logs).Take(this.SinglePackageCount));
+                        logs.AddRange(this._logs.Select(m => m.Logs is LogSvr ? (LogSvr)m.Logs : new LogSvr()
+                        {
+                            AppName = this.AppName,
+                            Content = m.Logs.ToString(),
+                            CreateTime = m.Time,
+                            Type = "Normal"
+                        }).Take(this.SinglePackageCount));
                         this._logs.RemoveRange(0, this._logs.Count > this.SinglePackageCount ? this.SinglePackageCount : this._logs.Count);
                     }
-                    this.writeLine(logs[0].CreateTime,logs);
+                    this.writeLine(logs[0].CreateTime, logs);
                     Thread.Sleep(this.ServerSendInterval);
                 }
             }
@@ -247,7 +252,7 @@ namespace Com.EnjoyCodes.Logger
             try
             {
                 var c = new Dictionary<string, string>();
-                c.Add("Logs", JsonConvert.SerializeObject(logs));
+                c.Add("Logs", Compression.CompressString(JsonConvert.SerializeObject(logs)));
 
                 var handler = new HttpClientHandler { AutomaticDecompression = DecompressionMethods.GZip };
                 using (var http = new HttpClient(handler))
